@@ -1,0 +1,64 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroCategoria.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <h1><p:outputLabel value="#{msg['pages.cadastroCategoria.menu']}"/></h1>
+	  
+	  <h:form id="formCategoria">	
+	  <p:panelGrid columns="4">
+	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMaxTimes']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.quantidadeMaxTimes}"/>
+	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMinJogadores']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.quantidadeMinJogadores}"/>
+	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMaxJogadores']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.quantidadeMaxJogadores}"/>
+	  <p:outputLabel value="#{msg['pages.cadastroCategoria.sexo']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.sexo}"/>   	  
+   	  </p:panelGrid>
+	  <p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}" 
+	                 action="#{categoriaManagedBean.salvar}"
+	                 update=":formCategoria, :tabelaCategoria"
+	                 />
+       </h:form>
+	
+   <p:dataTable value="#{categoriaManagedBean.categorias}"
+                var="aux"
+                id="tabelaCategoria"
+   >
+      <p:column headerText="#{msg['pages.cadastroCategoria.quantidadeMaxTimes']}">
+        <p:outputLabel value="#{aux.quantidadeMaxTimes}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroCategoria.quantidadeMinJogadores']}">
+        <p:outputLabel value="#{aux.quantidadeMinJogadores}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroCategoria.quantidadeMaxJogadores']}">
+        <p:outputLabel value="#{aux.quantidadeMaxJogadores}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">
+        <p:outputLabel value="#{aux.sexo}" />
+      </p:column>
+      
+      
+   </p:dataTable>	
+	   
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+
