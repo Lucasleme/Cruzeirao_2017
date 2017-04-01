@@ -1,6 +1,6 @@
 package sistema.modelos;
 
-public class Jogador extends Pessoa{
+public class Jogador extends Usuario{
 	private String posicao;
 	private int gools;
 	private int cartoesAmarelos;

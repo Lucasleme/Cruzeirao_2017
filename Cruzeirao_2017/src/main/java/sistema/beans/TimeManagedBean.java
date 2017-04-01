@@ -1,5 +1,6 @@
 package sistema.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -33,6 +34,16 @@ public class TimeManagedBean {
 	public List<Time> getTimes() {
 		return service.getTimes();
 	}
+	
+	public List<Time> createCars(int size) {
+        List<Time> list = new ArrayList<Time>();
+        for(int i = 0 ; i < size ; i++) {
+            list.add(time);
+        }
+         
+        return list;
+    }
+     
 
 	
 	

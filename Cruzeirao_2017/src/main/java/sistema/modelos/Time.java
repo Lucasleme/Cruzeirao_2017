@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Time {
 	private String nome;
 	private String responsavel;
-	private ArrayList<Pessoa> Jogadores;
+	private ArrayList<Usuario> Jogadores;
 	private String enderecos;
 	private String cidade;
 	private String diretorTime;
@@ -21,10 +21,10 @@ public class Time {
 	public void setResponsavel(String responsavel) {
 		this.responsavel = responsavel;
 	}
-	public ArrayList<Pessoa> getJogadores() {
+	public ArrayList<Usuario> getJogadores() {
 		return Jogadores;
 	}
-	public void setJogadores(ArrayList<Pessoa> jogadores) {
+	public void setJogadores(ArrayList<Usuario> jogadores) {
 		Jogadores = jogadores;
 	}
 	public String getEnderecos() {
@@ -51,6 +51,59 @@ public class Time {
 				+ ", diretorTime=" + diretorTime + "]";
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Jogadores == null) ? 0 : Jogadores.hashCode());
+		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
+		result = prime * result + ((diretorTime == null) ? 0 : diretorTime.hashCode());
+		result = prime * result + ((enderecos == null) ? 0 : enderecos.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((responsavel == null) ? 0 : responsavel.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Time other = (Time) obj;
+		if (Jogadores == null) {
+			if (other.Jogadores != null)
+				return false;
+		} else if (!Jogadores.equals(other.Jogadores))
+			return false;
+		if (cidade == null) {
+			if (other.cidade != null)
+				return false;
+		} else if (!cidade.equals(other.cidade))
+			return false;
+		if (diretorTime == null) {
+			if (other.diretorTime != null)
+				return false;
+		} else if (!diretorTime.equals(other.diretorTime))
+			return false;
+		if (enderecos == null) {
+			if (other.enderecos != null)
+				return false;
+		} else if (!enderecos.equals(other.enderecos))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (responsavel == null) {
+			if (other.responsavel != null)
+				return false;
+		} else if (!responsavel.equals(other.responsavel))
+			return false;
+		return true;
+	}
 	public boolean Validar_jogadores(){
 		return true;
 	}

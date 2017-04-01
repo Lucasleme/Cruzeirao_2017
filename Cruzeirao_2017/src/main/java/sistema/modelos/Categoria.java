@@ -10,8 +10,29 @@ public class Categoria {
 	private int quantidadeMinJogadores;
 	private int quantidadeMaxTimes;
 	private ArrayList<Partida> partidas;
+	private ArrayList<Time> times;
+	private boolean validarJogador;
+	private boolean validarTime;
 	
 	
+	public ArrayList<Time> getTimes() {
+		return times;
+	}
+	public void setTimes(ArrayList<Time> times) {
+		this.times = times;
+	}
+	public boolean isValidarJogador() {
+		return validarJogador;
+	}
+	public void setValidarJogador(boolean validarJogador) {
+		this.validarJogador = validarJogador;
+	}
+	public boolean isValidarTime() {
+		return validarTime;
+	}
+	public void setValidarTime(boolean validarTime) {
+		this.validarTime = validarTime;
+	}
 	public int getIdadeMinima() {
 		return idadeMinima;
 	}
@@ -48,11 +69,37 @@ public class Categoria {
 	public void setPartidas(ArrayList<Partida> partidas) {
 		this.partidas = partidas;
 	}
+	
+	public void gerarChave(){
+		
+	}
+	
+	public boolean addTime(Time time){
+		return false;
+	}
+	
+	public boolean addJogador(Jogador jogador){
+		return false;
+	}	
+	
+	public void switchTimes(boolean validarTime){
+		
+	}
+
+	public void switchJogador(boolean validarJogador){
+		
+	}	
+	
+	public int validarCategoria(ArrayList<Time> times){
+		return 0;
+	}
+	
 	@Override
 	public String toString() {
 		return "Categoria [idadeMinima=" + idadeMinima + ", sexo=" + sexo + ", quantidadeMaxJogadores="
 				+ quantidadeMaxJogadores + ", quantidadeMinJogadores=" + quantidadeMinJogadores
-				+ ", quantidadeMaxTimes=" + quantidadeMaxTimes + "]";
+				+ ", quantidadeMaxTimes=" + quantidadeMaxTimes + ", partidas=" + partidas + ", times=" + times
+				+ ", validarJogador=" + validarJogador + ", validarTime=" + validarTime + "]";
 	}
 	
 }

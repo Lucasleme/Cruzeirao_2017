@@ -14,8 +14,22 @@ public class Partida {
 	private ArrayList<Jogador> gools;
 	private ArrayList<Jogador> cartoesAmarelos; 
 	private ArrayList<Jogador> cartoesVermelhos;
+	private int rodada;
+	private Categoria categoria; 
 	
 	
+	public int getRodada() {
+		return rodada;
+	}
+	public void setRodada(int rodada) {
+		this.rodada = rodada;
+	}
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	public Array getTimes() {
 		return times;
 	}
@@ -72,8 +86,10 @@ public class Partida {
 	}
 	@Override
 	public String toString() {
-		return "Partida [data=" + data + ", horario=" + horario + ", placarVencedor=" + placarVencedor
-				+ ", placarPerdedor=" + placarPerdedor + ", endereco=" + endereco + "]";
+		return "Partida [times=" + times + ", data=" + data + ", horario=" + horario + ", placarVencedor="
+				+ placarVencedor + ", placarPerdedor=" + placarPerdedor + ", endereco=" + endereco + ", gools=" + gools
+				+ ", cartoesAmarelos=" + cartoesAmarelos + ", cartoesVermelhos=" + cartoesVermelhos + ", rodada="
+				+ rodada + ", categoria=" + categoria + "]";
 	}
 	
 	

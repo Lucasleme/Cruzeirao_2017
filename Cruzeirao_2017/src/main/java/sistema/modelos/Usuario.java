@@ -1,6 +1,6 @@
 package sistema.modelos;
 
-public class Pessoa {
+public class Usuario {
 	private String nome;
 	private String CPF;
 	private String RG;
@@ -8,6 +8,15 @@ public class Pessoa {
 	private String dataNascimento;
 	private String sexo;
 	private String senha;
+	private Inscricao inscricao;
+	
+	
+	public Inscricao getInscricao() {
+		return inscricao;
+	}
+	public void setInscricao(Inscricao inscricao) {
+		this.inscricao = inscricao;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -53,7 +62,7 @@ public class Pessoa {
 	@Override
 	public String toString() {
 		return "Pessoa [nome=" + nome + ", CPF=" + CPF + ", RG=" + RG + ", email=" + email + ", dataNascimento="
-				+ dataNascimento + ", sexo=" + sexo + ", senha=" + senha + "]";
+				+ dataNascimento + ", sexo=" + sexo + ", senha=" + senha + ", inscricao=" + inscricao + "]";
 	}
 	
 	
