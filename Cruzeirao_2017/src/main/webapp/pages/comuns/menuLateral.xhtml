@@ -16,21 +16,18 @@
             <p:menuitem value="Ver jogos" url="#" />
  		</p:submenu>
         <p:submenu label="#{msg['pages.comuns.menuLateral.editar']}" icon="ui-icon-pencil">
-            <p:menuitem value="Times" url="editarTime.xhtml" icon="ui-icon-arrowreturnthick-1-w" />
-            <p:menuitem value="Cadastros" url="editarCategoria.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.times']}" url="editarTime.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.categoria']}" url="editarCategoria.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.usuarios']}" url="editarUsuarios.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
         </p:submenu>
  
         <p:submenu label="#{msg['pages.comuns.menuLateral.ajuda']}" icon="ui-icon-help">
-            <p:menuitem value="Sobre o site" url="#" />
-            <p:menuitem value="Idioma" url="linguagem.xhtml" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.site']}" url="#" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.idioma']}" url="linguagem.xhtml" />
         </p:submenu>
  
-        <p:menuitem value="#{msg['pages.comuns.menuLateral.sair']}" url="http://www.primefaces.org" icon="ui-icon-close" />
- 
-        <f:facet name="Options">
-            <p:inputText style="margin-right:10px" placeholder="Procurar"/>
-            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
-        </f:facet>
+        <p:menuitem value="#{msg['pages.comuns.menuLateral.sair']}" url="InicioCadastro.xhtml" icon="ui-icon-close" />
+
     </p:menubar>
 </h:form>
 </ui:composition>

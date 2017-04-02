@@ -13,7 +13,6 @@ import sistema.service.TimeService;
 public class EditarTimeManagedBean {
 	     
 	    private TimeService service;
-	     
 	 
 	    public List<Time> getTimes() {
 	        return service.getTimes();

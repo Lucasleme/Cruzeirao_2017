@@ -12,16 +12,18 @@
 	</ui:define>
 
 	<ui:define name="principal">
+<div align="center">
 	  <h:form id="formTime">	
 	  <p:panelGrid columns="1">
-	  	<p:outputLabel value="Usuario" />
+	  	<p:outputLabel value="#{msg['pages.comuns.menuLateral.usuarios']}" />
       	<p:inputText value=""/>
-   	  	<p:outputLabel value="Senha" />
+   	  	<p:outputLabel value="#{msg['pages.cadastroPessoa.senha']}" />
       	<p:inputText value=""/>
    	  </p:panelGrid>
-	  		<p:commandButton value="Entrar"  url= "inicio.xhtml" />
-	 	 	<p:commandButton value="Cadastro" />
+   		    <p:commandButton value="Entrar" action="inicio.xhtml" immediate="true" />
+	 	 	<p:commandButton value="Cadastro" action="cadastroPessoa.xhtml" immediate="true" />
        </h:form>
-	
+	</div>
 	</ui:define>
+
 </ui:composition>
