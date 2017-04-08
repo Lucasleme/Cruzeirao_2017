@@ -12,16 +12,16 @@ public class Campeonato {
 	private float taxaInscricao;
 	private String periodoInscricao;
 	private String cidade;
-	//private String nome;
+	private String nome;
 	
 	
 	
-	/*public String getNome() {
+	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}*/
+	}
 	public ArrayList<Categoria> getCategorias() {
 		return categorias;
 	}
@@ -74,7 +74,7 @@ public class Campeonato {
 	public String toString() {
 		return "Campeonato [dataIni=" + dataIni + ", dataFin=" + dataFin + ", anoCampeonato=" + anoCampeonato
 				+ ", taxaInscricao=" + taxaInscricao + ", periodoInscricao=" + periodoInscricao + ", cidade=" + cidade
-				/*+ ",nome=" + nome*/ + "]";
+				+",nome=" + nome + "]";
 	}
 	
 	public boolean ValidaDadosTime(String time){

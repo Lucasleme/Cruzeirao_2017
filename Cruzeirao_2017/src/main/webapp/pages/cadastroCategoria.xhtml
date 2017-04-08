@@ -18,7 +18,9 @@
 	  <h1><p:outputLabel value="#{msg['pages.cadastroCategoria.menu']}"/></h1>
 	  
 	  <h:form id="formCategoria">	
-	  <p:panelGrid columns="4">
+	  <p:panelGrid columns="5">
+	  <p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.nome}"/>
 	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMaxTimes']}" />
       <p:inputText value="#{categoriaManagedBean.categoria.quantidadeMaxTimes}"/>
 	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMinJogadores']}" />
@@ -43,6 +45,9 @@
                 var="aux"
                 id="tabelaCategoria"
    >
+      <p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
+        <p:outputLabel value="#{aux.nome}" />
+      </p:column>
       <p:column headerText="#{msg['pages.cadastroCategoria.quantidadeMaxTimes']}">
         <p:outputLabel value="#{aux.quantidadeMaxTimes}" />
       </p:column>

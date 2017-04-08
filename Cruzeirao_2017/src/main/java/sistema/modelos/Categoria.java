@@ -13,6 +13,7 @@ public class Categoria {
 	private ArrayList<Time> times;
 	private boolean validarJogador;
 	private boolean validarTime;
+	private String nome;
 	
 	
 	public ArrayList<Time> getTimes() {
@@ -99,7 +100,13 @@ public class Categoria {
 		return "Categoria [idadeMinima=" + idadeMinima + ", sexo=" + sexo + ", quantidadeMaxJogadores="
 				+ quantidadeMaxJogadores + ", quantidadeMinJogadores=" + quantidadeMinJogadores
 				+ ", quantidadeMaxTimes=" + quantidadeMaxTimes + ", partidas=" + partidas + ", times=" + times
-				+ ", validarJogador=" + validarJogador + ", validarTime=" + validarTime + "]";
+				+ ", validarJogador=" + validarJogador + ", validarTime=" + validarTime + ", nome=" + nome + "]";
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 }
