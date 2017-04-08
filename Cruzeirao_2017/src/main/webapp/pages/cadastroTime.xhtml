@@ -18,10 +18,26 @@
 	  <h1><p:outputLabel value="#{msg['pages.cadastroTime.menu']}"/></h1>
 	  
 	  <h:form id="formTime">	
-	  <p:panelGrid columns="1">
+	  <p:panelGrid columns="4">
 	  <p:outputLabel value="#{msg['pages.cadastroTime.nome']}" />
-      <p:inputText value="#{timeManagedBean.time.nome}"/>
-   	  </p:panelGrid>
+      <p:inputText value="#{timeManagedBean.timeNovo.nome}"/>
+      
+       <p:outputLabel value="#{msg['pages.cadastroTime.rua']}" />
+      <p:inputText value="#{timeManagedBean.timeNovo.endereco.rua}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroTime.cidade']}" />
+      <p:inputText value="#{timeManagedBean.timeNovo.endereco.cidade}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroTime.bairro']}" />
+      <p:inputText value="#{timeManagedBean.timeNovo.endereco.bairro}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroTime.estado']}" />
+      <p:inputText value="#{timeManagedBean.timeNovo.endereco.estado}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroTime.cep']}" />
+      <p:inputText value="#{timeManagedBean.timeNovo.endereco.cep}"/>
+      
+   	  </p:panelGrid >
 	  <p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}" 
 	                 action="#{timeManagedBean.salvar}"
 	                 update=":formTime, :tabelaTime"
@@ -36,6 +52,9 @@
         <p:outputLabel value="#{aux.nome}" />
       </p:column>
       
+       <p:column headerText="#{msg['pages.cadastroTime.cidade']}">
+        <p:outputLabel value="#{aux.cidade}" />
+      </p:column>
       
    </p:dataTable>	
 	   

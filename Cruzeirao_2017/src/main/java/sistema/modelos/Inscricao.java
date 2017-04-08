@@ -6,6 +6,7 @@ public class Inscricao {
 	private String dataFinTime;
 	private String dataFinCampeonato;
 	private float taxa;
+	
 	public String getDataFinJogador() {
 		return dataFinJogador;
 	}

@@ -18,23 +18,38 @@
 	  <h1><p:outputLabel value="#{msg['pages.cadastroCampeonato.menu']}"/></h1>
 	  
 	  <h:form id="formCampeonato">	
-	  <p:panelGrid columns="5">
+	  <p:panelGrid columns="2">
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" />
       <p:inputText value="#{campeonatoManagedBean.campeonato.nome}"/>
+      
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataIni']}" />
       <p:inputText value="#{campeonatoManagedBean.campeonato.dataIni}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFinJog']}" />
+      <p:inputText value="#{campeonatoManagedBean.campeonato.inscricao.dataFinJogador}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFinTime']}" />
+      <p:inputText value="#{campeonatoManagedBean.campeonato.inscricao.dataFinTime}"/>
+      
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFin']}" />
-      <p:inputText value="#{campeonatoManagedBean.campeonato.dataFin}"/>
+      <p:inputText value="#{campeonatoManagedBean.campeonato.inscricao.dataFinCampeonato}"/>
+      
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.anoCampeonato']}" />
       <p:inputText value="#{campeonatoManagedBean.campeonato.anoCampeonato}"/>
+      
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.cidade']}" />
-      <p:inputText value="#{campeonatoManagedBean.campeonato.cidade}"/>   	  
+      <p:inputText value="#{campeonatoManagedBean.campeonato.cidade}"/>   	
+      
+       <p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
+      <p:inputText value="#{campeonatoManagedBean.campeonato.inscricao.taxa}"/>  
+        
    	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}" 
 	                 action="#{campeonatoManagedBean.salvar}"
 	                 update=":formCampeonato, :tabelaCampeonato"
 	                 />  
        </h:form>
+       
 	
    <p:dataTable value="#{campeonatoManagedBean.campeonatos}"
                 var="aux"
@@ -47,7 +62,7 @@
         <p:outputLabel value="#{aux.dataIni}" />
       </p:column>
       <p:column headerText="#{msg['pages.cadastroCampeonato.dataFin']}">
-        <p:outputLabel value="#{aux.dataFin}" />
+        <p:outputLabel value="#{aux.inscricao.dataFinCampeonato}" />
       </p:column>
       <p:column headerText="#{msg['pages.cadastroCampeonato.anoCampeonato']}">
         <p:outputLabel value="#{aux.anoCampeonato}" />

@@ -6,15 +6,12 @@ public class Campeonato {
 	
 	private ArrayList<Categoria> categorias;
 	private ArrayList<Time> times;
+	private ArrayList<Endereco> enderecos; 
 	private String dataIni;
-	private String dataFin;
+	private Inscricao inscricao; 
 	private String anoCampeonato;
-	private float taxaInscricao;
-	private String periodoInscricao;
 	private String cidade;
 	private String nome;
-	
-	
 	
 	public String getNome() {
 		return nome;
@@ -40,40 +37,37 @@ public class Campeonato {
 	public void setDataIni(String dataIni) {
 		this.dataIni = dataIni;
 	}
-	public String getDataFin() {
-		return dataFin;
-	}
-	public void setDataFin(String dataFin) {
-		this.dataFin = dataFin;
-	}
+
 	public String getAnoCampeonato() {
 		return anoCampeonato;
 	}
 	public void setAnoCampeonato(String anoCampeonato) {
 		this.anoCampeonato = anoCampeonato;
 	}
-	public float getTaxaInscricao() {
-		return taxaInscricao;
-	}
-	public void setTaxaInscricao(float taxaInscricao) {
-		this.taxaInscricao = taxaInscricao;
-	}
-	public String getPeriodoInscricao() {
-		return periodoInscricao;
-	}
-	public void setPeriodoInscricao(String periodoInscricao) {
-		this.periodoInscricao = periodoInscricao;
-	}
+
 	public String getCidade() {
 		return cidade;
 	}
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
+	
+	public ArrayList<Endereco> getEnderecos() {
+		return enderecos;
+	}
+	public void setEnderecos(ArrayList<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+	public Inscricao getInscricao() {
+		return inscricao;
+	}
+	public void setInscricao(Inscricao inscricao) {
+		this.inscricao = inscricao;
+	}
 	@Override
 	public String toString() {
-		return "Campeonato [dataIni=" + dataIni + ", dataFin=" + dataFin + ", anoCampeonato=" + anoCampeonato
-				+ ", taxaInscricao=" + taxaInscricao + ", periodoInscricao=" + periodoInscricao + ", cidade=" + cidade
+		return "Campeonato [dataIni=" + dataIni + ", dataFin=" + inscricao.getDataFinCampeonato() + ", anoCampeonato=" + anoCampeonato
+				+ ", taxaInscricao=" + inscricao.getTaxa() + ", cidade=" + cidade
 				+",nome=" + nome + "]";
 	}
 	

@@ -29,10 +29,45 @@
  
        <p:ajax event="cellEdit" listener="#{timeManagedBean.onCellEdit}" />
  
-       <p:column headerText="Nome">
+       <p:column headerText="#{msg['pages.cadastroTime.nome']}">
               <p:cellEditor>
                   <f:facet name="output"><h:outputText value="#{timeManagedBean.time.nome}" /></f:facet>
                   <f:facet name="input"><p:inputText value="#{timeManagedBean.time.nome}" style="width:96%"/></f:facet>
+              </p:cellEditor>
+          </p:column>
+          
+         <p:column headerText="#{msg['pages.cadastroTime.rua']}">
+              <p:cellEditor>
+                  <f:facet name="output"><h:outputText value="#{timeManagedBean.time.endereco.rua}" /></f:facet>
+                  <f:facet name="input"><p:inputText value="#{timeManagedBean.time.endereco.rua}" style="width:96%"/></f:facet>
+              </p:cellEditor>
+          </p:column>
+          
+          <p:column headerText="#{msg['pages.cadastroTime.cidade']}">
+              <p:cellEditor>
+                  <f:facet name="output"><h:outputText value="#{timeManagedBean.time.endereco.cidade}" /></f:facet>
+                  <f:facet name="input"><p:inputText value="#{timeManagedBean.time.endereco.cidade}" style="width:96%"/></f:facet>
+              </p:cellEditor>
+          </p:column>
+          
+             <p:column headerText="#{msg['pages.cadastroTime.bairro']}">
+              <p:cellEditor>
+                  <f:facet name="output"><h:outputText value="#{timeManagedBean.time.endereco.bairro}" /></f:facet>
+                  <f:facet name="input"><p:inputText value="#{timeManagedBean.time.endereco.bairro}" style="width:96%"/></f:facet>
+              </p:cellEditor>
+          </p:column>
+          
+             <p:column headerText="#{msg['pages.cadastroTime.estado']}">
+              <p:cellEditor>
+                  <f:facet name="output"><h:outputText value="#{timeManagedBean.time.endereco.estado}" /></f:facet>
+                  <f:facet name="input"><p:inputText value="#{timeManagedBean.time.endereco.estado}" style="width:96%"/></f:facet>
+              </p:cellEditor>
+          </p:column>
+          
+             <p:column headerText="#{msg['pages.cadastroTime.cep']}">
+              <p:cellEditor>
+                  <f:facet name="output"><h:outputText value="#{timeManagedBean.time.endereco.cep}" /></f:facet>
+                  <f:facet name="input"><p:inputText value="#{timeManagedBean.time.endereco.cep}" style="width:96%"/></f:facet>
               </p:cellEditor>
           </p:column>
    </p:dataTable>

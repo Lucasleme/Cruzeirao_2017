@@ -12,23 +12,23 @@ import sistema.service.TimeService;
 @SessionScoped
 public class TimeManagedBean {
 	
-	private Time time = new Time();
+	private Time timeNovo = new Time();
 	private TimeService service = new TimeService();
 	
 	
 	public void salvar()
 	{
-		service.salvar(time);
-		time = new Time();
+		service.salvar(timeNovo);
+		timeNovo = new Time();
 		
 	}
 
-	public Time getTime() {
-		return time;
+	public Time getTimeNovo() {
+		return timeNovo;
 	}
 
-	public void setTime(Time time) {
-		this.time = time;
+	public void setTimeNovo(Time timeNovo) {
+		this.timeNovo = timeNovo;
 	}
 
 	public List<Time> getTimes() {
@@ -38,7 +38,7 @@ public class TimeManagedBean {
 	public List<Time> createCars(int size) {
         List<Time> list = new ArrayList<Time>();
         for(int i = 0 ; i < size ; i++) {
-            list.add(time);
+            list.add(timeNovo);
         }
          
         return list;

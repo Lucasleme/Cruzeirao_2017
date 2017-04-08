@@ -15,7 +15,7 @@
 
 	<ui:define name="principal">
 	  
-	  <h1><p:outputLabel value="#{msg['pages.cadastroCategoria.menu']}"/></h1>
+	  <h1><p:outputLabel value="#{msg['pages.editarCategoria.menu']}"/></h1>
 	  
 	
    <p:dataTable value="#{categoriaManagedBean.categorias}"
@@ -37,6 +37,11 @@
       <p:column headerText="#{msg['pages.editarTime.editar']}">
 		<p:commandButton value="#{msg['pages.editarTime.editar']}" action="#{timeManagedBean.editar}"/>
       </p:column>
+      
+      <p:column headerText="BOTAO SEGUIR EDITAR TIMES">
+		<p:commandButton value="#{msg['pages.editarTime.editar']}" action="#{timeManagedBean.editar}"/>
+      </p:column>
+      
       
    </p:dataTable>	
 	   

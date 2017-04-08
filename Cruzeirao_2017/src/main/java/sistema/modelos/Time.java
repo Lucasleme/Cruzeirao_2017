@@ -6,7 +6,7 @@ public class Time {
 	private String nome;
 	private String responsavel;
 	private ArrayList<Usuario> Jogadores;
-	private String enderecos;
+	private Endereco endereco;
 	private String cidade;
 	private String diretorTime;
 	public String getNome() {
@@ -27,11 +27,12 @@ public class Time {
 	public void setJogadores(ArrayList<Usuario> jogadores) {
 		Jogadores = jogadores;
 	}
-	public String getEnderecos() {
-		return enderecos;
+	
+	public Endereco getEndereco() {
+		return endereco;
 	}
-	public void setEnderecos(String enderecos) {
-		this.enderecos = enderecos;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	public String getCidade() {
 		return cidade;
@@ -47,7 +48,7 @@ public class Time {
 	}
 	@Override
 	public String toString() {
-		return "Time [nome=" + nome + ", responsavel=" + responsavel + ", enderecos=" + enderecos + ", cidade=" + cidade
+		return "Time [nome=" + nome + ", responsavel=" + responsavel + ", enderecos=" + endereco + ", cidade=" + cidade
 				+ ", diretorTime=" + diretorTime + "]";
 	}
 	
@@ -58,7 +59,7 @@ public class Time {
 		result = prime * result + ((Jogadores == null) ? 0 : Jogadores.hashCode());
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((diretorTime == null) ? 0 : diretorTime.hashCode());
-		result = prime * result + ((enderecos == null) ? 0 : enderecos.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((responsavel == null) ? 0 : responsavel.hashCode());
 		return result;
@@ -87,10 +88,10 @@ public class Time {
 				return false;
 		} else if (!diretorTime.equals(other.diretorTime))
 			return false;
-		if (enderecos == null) {
-			if (other.enderecos != null)
+		if (endereco == null) {
+			if (other.endereco != null)
 				return false;
-		} else if (!enderecos.equals(other.enderecos))
+		} else if (!endereco.equals(other.endereco))
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
