@@ -1,0 +1,73 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroCampeonato.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <h1><p:outputLabel value="#{msg['pages.cadastroCampeonato.menu']}"/></h1>
+	  
+	  <h:form id="formCampeonato">	
+	  <p:panelGrid columns="5">
+	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" />
+      <p:inputText value="#{campeonatoManagedBean.campeonato.nome}"/>
+	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataIni']}" />
+      <p:inputText value="#{campeonatoManagedBean.campeonato.dataIni}"/>
+	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFin']}" />
+      <p:inputText value="#{campeonatoManagedBean.campeonato.dataFin}"/>
+	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.anoCampeonato']}" />
+      <p:inputText value="#{campeonatoManagedBean.campeonato.anoCampeonato}"/>
+	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.cidade']}" />
+      <p:inputText value="#{campeonatoManagedBean.campeonato.cidade}"/>   	  
+   	  </p:panelGrid>
+	  <p:commandButton  value="#{msg['pages.cadastroCampeonato.btnSalvar']}" 
+	                 	action="cadastrarEndereco.xhtml"
+	                 	update=":formCampeonato, :tabelaCampeonato"
+	                    />  
+	                 
+	                 
+       </h:form>
+	
+   <p:dataTable value="#{campeonatoManagedBean.campeonatos}"
+                var="aux"
+                id="tabelaCampeonato"
+   >
+      <p:column headerText="#{msg['pages.cadastroCampeonato.nome']}">
+        <p:outputLabel value="#{aux.nome}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroCampeonato.dataIni']}">
+        <p:outputLabel value="#{aux.dataIni}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroCampeonato.dataFin']}">
+        <p:outputLabel value="#{aux.dataFin}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroCampeonato.anoCampeonato']}">
+        <p:outputLabel value="#{aux.anoCampeonato}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroCampeonato.cidade']}">
+        <p:outputLabel value="#{aux.cidade}" />
+      </p:column>
+      <p:column headerText="Inscrição">
+      <p:commandButton value="Inscrição	" action="inscricao.xhtml" immediate="true" />
+      </p:column>
+      
+   </p:dataTable>	
+	   
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+
