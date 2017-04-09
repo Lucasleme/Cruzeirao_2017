@@ -18,24 +18,48 @@
 	  <h1><p:outputLabel value="#{msg['pages.inscricao.menu']}"/></h1>
 	  
 	  <h:form id="formInscricao">	
-	  <p:panelGrid columns="1">
-	  <p:outputLabel value="#{msg['pages.inscricao.dataFinJogador']}" />
+	  <p:panelGrid columns="2">
+
+      <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFinCampeonato']}" />
+      <p:inputText value="#{inscricaoManagedBean.inscricao.dataFinCampeonato}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFinJogador']}" />
       <p:inputText value="#{inscricaoManagedBean.inscricao.dataFinJogador}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFinTime']}" />
+      <p:inputText value="#{inscricaoManagedBean.inscricao.dataFinTime}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
+      <p:inputText value="#{inscricaoManagedBean.inscricao.taxa}"/>  
+        
    	  </p:panelGrid>
-	  <p:commandButton value="#{msg['pages.inscricao.btnSalvar']}" 
+	  <p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}" 
 	                 action="#{inscricaoManagedBean.salvar}"
 	                 update=":formInscricao, :tabelaInscricao"
 	                 />
+      <p:commandButton value="Cadastrar Categoria" action="cadastroCategoria.xhtml" immediate="true" />
+
        </h:form>
 	
    <p:dataTable value="#{inscricaoManagedBean.inscricoes}"
                 var="aux"
                 id="tabelaInscricao"
    >
+      <p:column headerText="#{msg['pages.inscricao.dataFinCampeonato']}">
+        <p:outputLabel value="#{aux.dataFinCampeonato}" />
+      </p:column>
+      
       <p:column headerText="#{msg['pages.inscricao.dataFinJogador']}">
         <p:outputLabel value="#{aux.dataFinJogador}" />
       </p:column>
+
+      <p:column headerText="#{msg['pages.inscricao.dataFinTime']}">
+        <p:outputLabel value="#{aux.dataFinTime}" />
+      </p:column>
       
+      <p:column headerText="#{msg['pages.inscricao.taxa']}">
+        <p:outputLabel value="#{aux.taxa}" />
+      </p:column>      
       
    </p:dataTable>	
 	   

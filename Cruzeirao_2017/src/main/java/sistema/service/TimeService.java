@@ -13,15 +13,15 @@ public class TimeService {
 
 	}
 	
-	public void salvar(Time time)
+	public void salvar(Time timeNovo)
 	{
 		int a = 0;
 		for(int i=0;i<times.size(); i++){
-			if(time.getNome() == times.get(i).getNome())
+			if(timeNovo.getNome() == times.get(i).getNome())
 				a++;
 		}
 		if(a==0)
-	    times.add(time);
+	    times.add(timeNovo);
 	}
 	
 

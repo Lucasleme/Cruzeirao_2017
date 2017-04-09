@@ -21,21 +21,9 @@
 	  <p:panelGrid columns="4">
 	  <p:outputLabel value="#{msg['pages.cadastroTime.nome']}" />
       <p:inputText value="#{timeManagedBean.timeNovo.nome}"/>
-      
-       <p:outputLabel value="#{msg['pages.cadastroTime.rua']}" />
-      <p:inputText value="#{timeManagedBean.timeNovo.endereco.rua}"/>
-      
+
       <p:outputLabel value="#{msg['pages.cadastroTime.cidade']}" />
-      <p:inputText value="#{timeManagedBean.timeNovo.endereco.cidade}"/>
-      
-      <p:outputLabel value="#{msg['pages.cadastroTime.bairro']}" />
-      <p:inputText value="#{timeManagedBean.timeNovo.endereco.bairro}"/>
-      
-      <p:outputLabel value="#{msg['pages.cadastroTime.estado']}" />
-      <p:inputText value="#{timeManagedBean.timeNovo.endereco.estado}"/>
-      
-      <p:outputLabel value="#{msg['pages.cadastroTime.cep']}" />
-      <p:inputText value="#{timeManagedBean.timeNovo.endereco.cep}"/>
+      <p:inputText value="#{timeManagedBean.timeNovo.cidade}"/>
       
    	  </p:panelGrid >
 	  <p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}" 
@@ -44,18 +32,22 @@
 	                 />
        </h:form>
 	
-   <p:dataTable value="#{timeManagedBean.times}"
-                var="aux"
-                id="tabelaTime"
-   >
-      <p:column headerText="#{msg['pages.cadastroTime.nome']}">
-        <p:outputLabel value="#{aux.nome}" />
-      </p:column>
-      
-       <p:column headerText="#{msg['pages.cadastroTime.cidade']}">
-        <p:outputLabel value="#{aux.cidade}" />
-      </p:column>
-      
+	   <p:dataTable value="#{timeManagedBean.times}"
+	                var="aux"
+	                id="tabelaTime"
+	   >
+	      <p:column headerText="#{msg['pages.cadastroTime.nome']}">
+	        <p:outputLabel value="#{aux.nome}" />
+	      </p:column>
+	      
+	       <p:column headerText="#{msg['pages.cadastroTime.cidade']}">
+	        <p:outputLabel value="#{aux.cidade}" />
+	      </p:column>
+	      
+	      <p:column headerText="Cadastrar Jogadores">
+	      	<p:commandButton value="Jogadores" action="cadastroJogadores.xhtml" immediate="true" />
+	      </p:column>
+	      
    </p:dataTable>	
 	   
 	</ui:define>

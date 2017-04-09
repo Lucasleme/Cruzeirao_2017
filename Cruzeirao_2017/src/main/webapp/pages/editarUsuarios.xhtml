@@ -16,7 +16,7 @@
 	<ui:define name="principal">
 	  
 	  <h1><p:outputLabel value="#{msg['pages.cadastroUsuarios.menu']}"/></h1>
-	  
+	 
 	
    <p:dataTable value="#{pessoaManagedBean.pessoas}"
                 var="aux"
@@ -41,17 +41,15 @@
       	<p:outputLabel value="#{aux.sexo}" />
       </p:column>      
 
-         <p:column headerText="#{msg['pages.cadastroUsuarios.nivel']}">
-           <p:cellEditor>
-               <f:facet name="output"><h:outputText value="#{pessoa.nivel}" /></f:facet>
-               <f:facet name="input">
-                   <h:selectOneMenu value="#{pessoa.nivel}" style="width:100%">
-                       <f:selectItems value="#{pessoaManagedBeam.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />
-                   </h:selectOneMenu>
-               </f:facet>
-           </p:cellEditor>
-       </p:column>
-      
+		<p:column headerText="nivel">
+			<h:panelGrid columns="2" cellpadding="5"> 
+	        <h:outputLabel for="multiple" value="Nivel:" />
+    	    	<p:selectCheckboxMenu id="nivel" value="#{pessoaManagedBean.nivel}" label="nivel" multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            		<f:selectItems value="#{pessoaManagedBean.nivel}" />
+        		</p:selectCheckboxMenu>
+    		</h:panelGrid>
+		</p:column>     
    </p:dataTable>	
 	   
 	</ui:define>

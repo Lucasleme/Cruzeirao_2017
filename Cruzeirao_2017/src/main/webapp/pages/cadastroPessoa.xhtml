@@ -46,9 +46,43 @@
                	</p:panelGrid> 
                	<p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}" 
 	                 action="#{pessoaManagedBean.salvar}" 
-	                 update=":formCadastro"/>
+	                 update=":formCadastro, :tabelaCadastro"/>
 	           <p:commandButton value="Entrar" action="inicio.xhtml" immediate="true" />
 	 </h:form>  
+	    <p:dataTable value="#{pessoaManagedBean.pessoas}"
+                var="aux"
+                id="tabelaCadastro"
+   >
+      <p:column headerText="#{msg['pages.cadastroTime.nome']}">
+        <p:outputLabel value="#{aux.nome}" />
+      </p:column>
+      
+       <p:column headerText="CPF">
+        <p:outputLabel value="#{aux.cpf}" />
+      </p:column>
+
+       <p:column headerText="RG">
+        <p:outputLabel value="#{aux.rg}" />
+      </p:column>
+      
+      <p:column headerText="E-mail">
+        <p:outputLabel value="#{aux.email}" />
+      </p:column>
+      
+      <p:column headerText="#{msg['pages.cadastroPessoa.senha']}">
+        <p:outputLabel value="#{aux.senha}" />
+      </p:column>
+      
+      <p:column headerText="#{msg['pages.cadastroTime.dataNascimento']}">
+        <p:outputLabel value="#{aux.dataNascimento}" />
+      </p:column>
+      
+      <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">
+        <p:outputLabel value="#{aux.sexo}" />
+      </p:column>
+      
+      </p:dataTable>
+	 
 	 </ui:define>
 </ui:composition>
 

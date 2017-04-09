@@ -60,7 +60,10 @@
       <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">
         <p:outputLabel value="#{aux.sexo}" />
       </p:column>
-      
+
+      <p:column headerText="#{msg['pages.comuns.menuLateral.times']}">
+        <p:commandButton value="#{msg['pages.cadastroTime.menu']}" action="cadastroTime.xhtml" immediate="true" />
+      </p:column>      
       
    </p:dataTable>	
 	   
