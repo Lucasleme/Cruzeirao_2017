@@ -16,20 +16,21 @@
 	<ui:define name="principal">
 	  
 	  <h1><p:outputLabel value="#{msg['pages.verJogosCategoria.menu']}"/></h1>
-	  
+
+	<p:dataTable value="">
+		 <p:column headerText="#{msg['pages.verJogosCategoria.campeonato']}">
+	        <h:outputText value="Cruzeirao 2017" />
+	    </p:column>
 	
-   <p:dataTable value="#{categoriaManagedBean.categorias}"
-                var="aux"
-                id="tabelaCategoria"
-   >
-      <p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
-        <p:outputLabel value="#{aux.nome}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.verJogosCategoria.editar']}">
-		<p:commandButton value="#{msg['pages.verJogosCategoria.editar']}" action="verChaves.xhtml"/>
-      </p:column>
-      
-   </p:dataTable>	
+	    <p:column headerText="#{msg['pages.verJogosCategoria.categoria']}">
+	        <h:outputText value="Masculino" />
+	    </p:column>
+	 
+	    <p:column headerText="#{msg['pages.verJogos.acessoCategoria']}">
+	        <p:commandButton value="#{msg['pages.verJogos.acessarCategoria']}" action="verChaves.xhtml"/>
+	    </p:column>
+	 
+	</p:dataTable>	
 	   
 	</ui:define>
 </ui:composition>

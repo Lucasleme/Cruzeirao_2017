@@ -18,24 +18,27 @@
 	  <h1><p:outputLabel value="#{msg['pages.verJogos.menu']}"/></h1>
 	  
 	
-	
-<h3>Dados dos jogadores</h3>
+<h3><p:outputLabel value="#{msg['pages.verJogadores.dados']}"/></h3>
+
 <p:panelGrid columns="2">
     <f:facet name="header">
-        <p:graphicImage name="imagens/pp.png" />
     </f:facet>
  
-    <h:outputText value="Name:" />
+    <h:outputText value="#{msg['pages.cadastroCampeonato.nome']}" />
     <h:outputText value="Pele pendulo Dourado" />
+ 	
+    <h:outputText value="#{msg['pages.verChaves.times']}" />
+    <h:outputText value="TimeA" />
  
-    <h:outputText value="Team:" />
-    <h:outputText value="Brazil" />
+    <h:outputText value="#{msg['pages.verJogadores.posicao']}" />
+    <h:outputText value="#{msg['pages.verJogadores.posicaoAtacante']}" />
  
-    <h:outputText value="Position:" />
-    <h:outputText value="|Goleiro" />
- 
-    <h:outputText value="Number:" />
+    <h:outputText value="#{msg['pages.verJogadores.numero']}" />
     <h:outputText value="24" />
+    
+    <h:outputText value="#{msg['pages.verJogadores.golsPartida']}" />
+    <h:outputText value="1" />
+    
 </p:panelGrid>
 	   
 	</ui:define>
