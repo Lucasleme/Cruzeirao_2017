@@ -9,27 +9,27 @@
 >
 	
 	<ui:define name="title">
-		<h:outputText value="#{msg['pages.inscricao.title']}" />
+		<h:outputText value="#{msg['pages.cadastroCampeonato.inscricao']}" />
 	</ui:define>
 	
 
 	<ui:define name="principal">
 	  
-	  <h1><p:outputLabel value="#{msg['pages.inscricao.menu']}"/></h1>
+	  <h1><p:outputLabel value="#{msg['pages.cadastroCampeonato.inscricao']}"/></h1>
 	  
 	  <h:form id="formInscricao">	
 	  <p:panelGrid columns="2">
 
-      <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFinCampeonato']}" />
+      <p:outputLabel value="#{msg['pages.inscricao.dataFinCampeonato']}" />
       <p:inputText value="#{inscricaoManagedBean.inscricao.dataFinCampeonato}"/>
       
-      <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFinJogador']}" />
+      <p:outputLabel value="#{msg['pages.inscricao.dataFinJogador']}" />
       <p:inputText value="#{inscricaoManagedBean.inscricao.dataFinJogador}"/>
       
-      <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFinTime']}" />
+      <p:outputLabel value="#{msg['pages.inscricao.dataFinTime']}" />
       <p:inputText value="#{inscricaoManagedBean.inscricao.dataFinTime}"/>
       
-      <p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
+      <p:outputLabel value="#{msg['pages.inscricao.taxa']}" />
       <p:inputText value="#{inscricaoManagedBean.inscricao.taxa}"/>  
         
    	  </p:panelGrid>
@@ -37,7 +37,7 @@
 	                 action="#{inscricaoManagedBean.salvar}"
 	                 update=":formInscricao, :tabelaInscricao"
 	                 />
-      <p:commandButton value="Cadastrar Categoria" action="cadastroCategoria.xhtml" immediate="true" />
+      <p:commandButton value="#{msg['pages.cadastroCategoria.menu']}" action="cadastroCategoria.xhtml" immediate="true" />
 
        </h:form>
 	

@@ -18,33 +18,30 @@
 	  <h1><p:outputLabel value="#{msg['pages.cadastroUsuarios.menu']}"/></h1>
 	 
 	
-   <p:dataTable value="#{pessoaManagedBean.pessoas}"
-                var="aux"
-                id="tabelaPessoa"
-   >
+   <p:dataTable value=""   >
       <p:column headerText="#{msg['pages.cadastroTime.nome']}">
-        <p:outputLabel value="#{aux.nome}" />
+        <p:outputLabel value="Grupo Brotherhood" />
       </p:column>
       <p:column headerText="CPF">
-        <p:outputLabel value="#{aux.cpf}" />
+        <p:outputLabel value="000.000.000-00" />
       </p:column>
       <p:column headerText="RG">
-        <p:outputLabel value="#{aux.rg}" />
+        <p:outputLabel value="00.000.000-0" />
       </p:column>
       <p:column headerText="Email">
-        <p:outputLabel value="#{aux.email}" />
+        <p:outputLabel value="cruz_eirao@jogos.br" />
       </p:column>
       <p:column headerText="#{msg['pages.cadastroTime.dataNascimento']}">
-      	<p:outputLabel value="#{aux.email}" />
+      	<p:outputLabel value="14-07-1995" />
       </p:column>
 	  <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">
-      	<p:outputLabel value="#{aux.sexo}" />
+      	<p:outputLabel value="M" />
       </p:column>      
 
-		<p:column headerText="nivel">
-			<h:panelGrid columns="2" cellpadding="5"> 
-	        <h:outputLabel for="multiple" value="Nivel:" />
-    	    	<p:selectCheckboxMenu id="nivel" value="#{pessoaManagedBean.nivel}" label="nivel" multiple="true"
+		<p:column headerText="#{msg['pages.cadastroCategoria.nivel']}">
+			<h:panelGrid columns="1" cellpadding="5"> 
+	        <h:outputLabel for="multiple" value="" />
+    	    	<p:selectCheckboxMenu id="nivel" value="#{pessoaManagedBean.nivel}" label="#{msg['pages.comuns.menuLateral.usuarios']}" multiple="true"
                               filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
             		<f:selectItems value="#{pessoaManagedBean.nivel}" />
         		</p:selectCheckboxMenu>

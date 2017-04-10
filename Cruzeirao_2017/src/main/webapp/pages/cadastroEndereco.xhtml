@@ -1,4 +1,4 @@
-<ui:composition template="templateInicio.xhtml"
+<ui:composition template="templateMenu.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -12,30 +12,70 @@
 	</ui:define>
 
 	<ui:define name="principal"> 
-	<h:form>	
+	<h:form id="formEndereco">	
 	
 	            <p:panelGrid columns="4">
-	                                  	
-                 	<h:outputText value="Estado: " />
-                    <p:inputText value="  " required="true" label="Estado"/>
+	            
+	                <p:outputLabel value="#{msg['pages.cadastroTime.nome']}" />
+                    <p:inputText value="#{enderecoManagedBean.endereco.nome}" required="true" />
+                                      	
+                 	<p:outputLabel value="#{msg['pages.cadastroTime.estado']}" />
+                    <p:inputText value="#{enderecoManagedBean.endereco.estado}" required="true" />
                  	
-                 	<h:outputText value="Cidade: " />
-                    <p:inputText value="  " required="true" label="Cidade"/>
+                 	<p:outputLabel value="#{msg['pages.cadastroTime.cidade']}" />
+                    <p:inputText value="#{enderecoManagedBean.endereco.cidade}" required="true" />
                     
-                    <h:outputText value="Bairro: " />
-                    <p:inputText value="  " required="true" label="Bairro"/>
+                    <p:outputLabel value="#{msg['pages.cadastroTime.bairro']}" />
+                    <p:inputText value="#{enderecoManagedBean.endereco.bairro}" required="true" />
                     
-                    <h:outputText value="Rua: " />
-                    <p:inputText value="  " required="true" label="Rua"/>
-                    
-                    <p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}"
-                    action="cadastroCategoria.xhtml"
-                    />
-                    <p:commandButton value="Skip"
-                    action="cadastroCategoria.xhtml"
-                    />
+                    <p:outputLabel value="#{msg['pages.cadastroTime.rua']}" />
+                    <p:inputText value="#{enderecoManagedBean.endereco.rua}" required="true" />
                              	
                	</p:panelGrid> 
+      <p:commandButton value="#{msg['pages.cadastroCampeonato.voltar']}"
+                    action="cadastroCategoria.xhtml "
+                     immediate="true" 
+                    />
+                    
+	  <p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}" 
+	                 action="inicio.xhtml"
+	                  immediate="true" 
+	                 />
 	 </h:form>  
+   <p:dataTable value="">
+   
+      <p:column headerText="#{msg['pages.cadastroTime.nome']}">
+        <p:outputLabel value="Lujniki" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroTime.estado']}">
+        <p:outputLabel value="Khamovniki" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroTime.cidade']}">
+        <p:outputLabel value="Moscou" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroTime.bairro']}">
+        <p:outputLabel value="Federação Russa" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroTime.rua']}">
+        <p:outputLabel value="Russiana" />
+      </p:column>
+      
+ 	<p:column headerText="#{msg['pages.cadastroCategoria.definicao']}">
+			<h:panelGrid columns="1" cellpadding="5"> 
+	        <h:outputLabel for="multiple" value="" />
+    	    	<p:selectCheckboxMenu id="local" value="#{enderecoManagedBean.local}" label="#{msg['pages.cadastroCategoria.local']}" multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            		<f:selectItems value="#{enderecoManagedBean.local}" />
+        		</p:selectCheckboxMenu>
+    		</h:panelGrid>
+		</p:column>    
+
+      <p:column headerText="#{msg['pages.comuns.menuLateral.times']}">
+        <p:commandButton value="#{msg['pages.cadastroTime.menu']}" action="cadastroTime.xhtml" immediate="true" />
+      </p:column>  
+      
+          </p:dataTable>
+
+	 
 	 </ui:define>
 </ui:composition>

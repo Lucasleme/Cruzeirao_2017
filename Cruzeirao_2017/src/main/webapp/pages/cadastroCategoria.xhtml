@@ -39,6 +39,8 @@
 	                 action="#{categoriaManagedBean.salvar}"
 	                 update=":formCategoria, :tabelaCategoria"
 	                 />
+	  <p:commandButton value="#{msg['pages.cadastroEndereco.menu']}" 
+	                 action="cadastroEndereco.xhtml" />	                 
        </h:form>
 	
    <p:dataTable value="#{categoriaManagedBean.categorias}"

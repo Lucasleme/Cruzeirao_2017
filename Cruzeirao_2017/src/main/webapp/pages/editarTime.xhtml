@@ -23,9 +23,7 @@
 
    <p:dataTable value="#{timeManagedBean.times}" var="aux"
                 id="tabelaTimes" editable="true" editMode="cell">
-       <f:facet name="header">
-           Cell Editing with Click and RightClick
-       </f:facet>
+
  
        <p:ajax event="cellEdit" listener="#{timeManagedBean.onCellEdit}" />
  
@@ -71,7 +69,7 @@
               </p:cellEditor>
           </p:column>
           
-       <p:column headerText="Edit Players">
+       <p:column headerText="#{msg['pages.editarTime.jogadores']}">
 		<p:commandButton value="#{msg['pages.editarTime.editar']}" action="editarUsuarios.xhtml"/>
       </p:column>
    </p:dataTable>

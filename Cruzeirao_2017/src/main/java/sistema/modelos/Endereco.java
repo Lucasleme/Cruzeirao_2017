@@ -2,6 +2,7 @@ package sistema.modelos;
 
 public class Endereco {
 	
+	private String nome;
 	private String rua;
 	private String Cidade;
 	private String Bairro;
@@ -42,6 +43,12 @@ public class Endereco {
 	@Override
 	public String toString() {
 		return "Endereco [rua=" + rua + ", Cidade=" + Cidade + ", Bairro=" + Bairro + ", Estado=" + Estado + "]";
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	
