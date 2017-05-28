@@ -1,8 +1,21 @@
 package sistema.modelos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Campeonato {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+
+@Entity
+public class Campeonato implements Serializable{
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private String nome;
 	
 	private ArrayList<Categoria> categorias;
 	private ArrayList<Time> times;
@@ -11,7 +24,8 @@ public class Campeonato {
 	private Inscricao inscricao; 
 	private String anoCampeonato;
 	private String cidade;
-	private String nome;
+	
+	
 	
 	public String getNome() {
 		return nome;
