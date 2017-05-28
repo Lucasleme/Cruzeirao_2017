@@ -7,15 +7,15 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.CellEditEvent;
 
-import sistema.modelos.Time;
-import sistema.service.TimeService;
+import sistema.modelos.Equipe;
+import sistema.service.EquipeService;
 
-public class EditarTimeManagedBean {
-	     
-	    private TimeService service;
-	 
-	    public List<Time> getTimes() {
-	        return service.getTimes();
+
+public class EditarEquipeManagedBean {
+	  private EquipeService service;
+		 
+	    public List<Equipe> getEquipes() {
+	        return service.getEquipes();
 	    }
 	     
 	    public void onCellEdit(CellEditEvent event) {
@@ -27,5 +27,4 @@ public class EditarTimeManagedBean {
 	            FacesContext.getCurrentInstance().addMessage(null, msg);
 	        }
 	    }
-	}
-	
+}

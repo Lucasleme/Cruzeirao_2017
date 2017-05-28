@@ -1,80 +1,77 @@
 package sistema.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Campeonato {
-	
-	private ArrayList<Categoria> categorias;
-	private ArrayList<Time> times;
-	private ArrayList<Endereco> enderecos; 
-	private String dataIni;
-	private Inscricao inscricao; 
-	private String anoCampeonato;
-	private String cidade;
+
 	private String nome;
-	
+	private List<Local> locais;
+	private List<Juiz> juizes;
+	private Categoria categoria;
+	private Date dataInicioInscricao;
+	private Date dataFimCampeonato;
+	private double valorTaxa;
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public ArrayList<Categoria> getCategorias() {
-		return categorias;
-	}
-	public void setCategorias(ArrayList<Categoria> categorias) {
-		this.categorias = categorias;
-	}
-	public ArrayList<Time> getTimes() {
-		return times;
-	}
-	public void setTimes(ArrayList<Time> times) {
-		this.times = times;
-	}
-	public String getDataIni() {
-		return dataIni;
-	}
-	public void setDataIni(String dataIni) {
-		this.dataIni = dataIni;
+
+	public List<Local> getLocais() {
+		return locais;
 	}
 
-	public String getAnoCampeonato() {
-		return anoCampeonato;
-	}
-	public void setAnoCampeonato(String anoCampeonato) {
-		this.anoCampeonato = anoCampeonato;
+	public void setLocais(List<Local> locais) {
+		this.locais = locais;
 	}
 
-	public String getCidade() {
-		return cidade;
+	public List<Juiz> getJuizes() {
+		return juizes;
 	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+
+	public void setJuizes(List<Juiz> juizes) {
+		this.juizes = juizes;
 	}
-	
-	public ArrayList<Endereco> getEnderecos() {
-		return enderecos;
+
+	public Categoria getCategoria() {
+		return categoria;
 	}
-	public void setEnderecos(ArrayList<Endereco> enderecos) {
-		this.enderecos = enderecos;
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
-	public Inscricao getInscricao() {
-		return inscricao;
+
+	public Date getDataInicioInscricao() {
+		return dataInicioInscricao;
 	}
-	public void setInscricao(Inscricao inscricao) {
-		this.inscricao = inscricao;
+
+	public void setDataInicioInscricao(Date dataInicioInscricao) {
+		this.dataInicioInscricao = dataInicioInscricao;
 	}
+
+	public Date getDataFimCampeonato() {
+		return dataFimCampeonato;
+	}
+
+	public void setDataFimCampeonato(Date dataFimCampeonato) {
+		this.dataFimCampeonato = dataFimCampeonato;
+	}
+
+	public double getValorTaxa() {
+		return valorTaxa;
+	}
+
+	public void setValorTaxa(double valorTaxa) {
+		this.valorTaxa = valorTaxa;
+	}
+
 	@Override
 	public String toString() {
-		return "Campeonato [dataIni=" + dataIni + ", dataFin=" + inscricao.getDataFinCampeonato() + ", anoCampeonato=" + anoCampeonato
-				+ ", taxaInscricao=" + inscricao.getTaxa() + ", cidade=" + cidade
-				+",nome=" + nome + "]";
+		return "Campeonato [nome=" + nome + ", juizes=" + juizes + ", categoria=" + categoria + ", dataInicioInscricao="
+				+ dataInicioInscricao + ", dataFimCampeonato=" + dataFimCampeonato + ", valorTaxa=" + valorTaxa + "]";
 	}
-	
-	public boolean ValidaDadosTime(String time){
-		return false;
-	}
-	
-	
-	
+
 }

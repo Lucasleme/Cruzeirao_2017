@@ -1,112 +1,109 @@
 package sistema.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Categoria {
-	
-	private int idadeMinima;
-	private String sexo;
-	private int quantidadeMaxJogadores;
-	private int quantidadeMinJogadores;
-	private int quantidadeMaxTimes;
-	private ArrayList<Partida> partidas;
-	private ArrayList<Time> times;
-	private boolean validarJogador;
-	private boolean validarTime;
+
+	private int CategoriaID;
+
 	private String nome;
-	
-	
-	public ArrayList<Time> getTimes() {
-		return times;
-	}
-	public void setTimes(ArrayList<Time> times) {
-		this.times = times;
-	}
-	public boolean isValidarJogador() {
-		return validarJogador;
-	}
-	public void setValidarJogador(boolean validarJogador) {
-		this.validarJogador = validarJogador;
-	}
-	public boolean isValidarTime() {
-		return validarTime;
-	}
-	public void setValidarTime(boolean validarTime) {
-		this.validarTime = validarTime;
-	}
-	public int getIdadeMinima() {
-		return idadeMinima;
-	}
-	public void setIdadeMinima(int idadeMinima) {
-		this.idadeMinima = idadeMinima;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-	public int getQuantidadeMaxJogadores() {
-		return quantidadeMaxJogadores;
-	}
-	public void setQuantidadeMaxJogadores(int quantidadeMaxJogadores) {
-		this.quantidadeMaxJogadores = quantidadeMaxJogadores;
-	}
-	public int getQuantidadeMinJogadores() {
-		return quantidadeMinJogadores;
-	}
-	public void setQuantidadeMinJogadores(int quantidadeMinJogadores) {
-		this.quantidadeMinJogadores = quantidadeMinJogadores;
-	}
-	public int getQuantidadeMaxTimes() {
-		return quantidadeMaxTimes;
-	}
-	public void setQuantidadeMaxTimes(int quantidadeMaxTimes) {
-		this.quantidadeMaxTimes = quantidadeMaxTimes;
-	}
-	public ArrayList<Partida> getPartidas() {
-		return partidas;
-	}
-	public void setPartidas(ArrayList<Partida> partidas) {
-		this.partidas = partidas;
-	}
-	
-	public void gerarChave(){
-		
-	}
-	
-	public boolean addTime(Time time){
-		return false;
-	}
-	
-	public boolean addJogador(Jogador jogador){
-		return false;
-	}	
-	
-	public void switchTimes(boolean validarTime){
-		
+	private int nascidoApartirDe;
+	private List<Inscricao> inscricoes;
+	private Campeonato campeonato;
+	private List<Grupo> grupos;
+	private int minJogadores;
+	private int maxJogadores;
+	private Sexo sexo;
+
+	public int getCategoriaID() {
+		return CategoriaID;
 	}
 
-	public void switchJogador(boolean validarJogador){
-		
-	}	
-	
-	public int validarCategoria(ArrayList<Time> times){
-		return 0;
+	public void setCategoriaID(int categoriaID) {
+		CategoriaID = categoriaID;
 	}
-	
-	@Override
-	public String toString() {
-		return "Categoria [idadeMinima=" + idadeMinima + ", sexo=" + sexo + ", quantidadeMaxJogadores="
-				+ quantidadeMaxJogadores + ", quantidadeMinJogadores=" + quantidadeMinJogadores
-				+ ", quantidadeMaxTimes=" + quantidadeMaxTimes + ", partidas=" + partidas + ", times=" + times
-				+ ", validarJogador=" + validarJogador + ", validarTime=" + validarTime + ", nome=" + nome + "]";
-	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public int getNascidoApartirDe() {
+		return nascidoApartirDe;
+	}
+
+	public void setNascidoApartirDe(int nascidoApartirDe) {
+		this.nascidoApartirDe = nascidoApartirDe;
+	}
+
+	public List<Inscricao> getInscricoes() {
+		return inscricoes;
+	}
+
+	public void setInscricoes(List<Inscricao> inscricoes) {
+		this.inscricoes = inscricoes;
+	}
+
+	public void addInscricoes(Inscricao inscricao){
+		inscricoes.add(inscricao);
+	}
 	
+	public Campeonato getCampeonato() {
+		return campeonato;
+	}
+
+	public void setCampeonato(Campeonato campeonato) {
+		this.campeonato = campeonato;
+	}
+
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
+	}
+	
+	public void addGrupo(Grupo grupo){
+		grupos.add(grupo);
+	}
+
+	public int getMinJogadores() {
+		return minJogadores;
+	}
+
+	public void setMinJogadores(int minJogadores) {
+		this.minJogadores = minJogadores;
+	}
+
+	public int getMaxJogadores() {
+		return maxJogadores;
+	}
+
+	public void setMaxJogadores(int maxJogadores) {
+		this.maxJogadores = maxJogadores;
+	}
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
+	
+	//***********faltando implementar, gerar a chave************
+	public void gerarChave() {
+
+	}
+	
+	//***********faltando implementar, validar as equipes*********
+	public int validarCategoria(){
+		return 0;
+	}
+
 }

@@ -18,38 +18,38 @@
 	            <p:panelGrid columns="4">
                  	
                  	<h:outputText value="#{msg['pages.cadastroTime.nome']}" />
-                    <p:inputText value="#{pessoaManagedBean.pessoa.nome}" required="true" label="Nome"/>
+                    <p:inputText value="#{pessoaManagedBean.usuario.nome}" required="true" label="Nome"/>
                     
                     <h:outputText value="CPF: " />
-                    <p:inputText value="#{pessoaManagedBean.pessoa.cpf}" required="true" label="CPF"/>
+                    <p:inputText value="#{pessoaManagedBean.usuario.cpf}" required="true" label="CPF"/>
                     
                     <h:outputText value="RG: " />
-                    <p:inputText value="#{pessoaManagedBean.pessoa.rg}" required="true" label="RG"/>
+                    <p:inputText value="#{pessoaManagedBean.usuario.rg}" required="true" label="RG"/>
                     
                     <h:outputText value="Email: " />
-                    <p:inputText value="#{pessoaManagedBean.pessoa.email}" required="true" label="Email"/>
+                    <p:inputText value="#{pessoaManagedBean.usuario.email}" required="true" label="Email"/>
                     
         			<h:outputLabel for="pwd1" value="#{msg['pages.cadastroPessoa.senha']}" />
-       			 	<p:password id="pwd1" value="#{pessoaManagedBean.pessoa.senha}" match="pwd1" label="Senha" required="true" />
+       			 	<p:password id="pwd1" value="#{pessoaManagedBean.usuario.senha}" match="pwd1" label="Senha" required="true" />
        			 	
        			 	<p:outputLabel for="button" value="#{msg['pages.cadastroTime.dataNascimento']}" />
-        			<p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+        			<p:calendar id="button" value="#{calendarView.date.toString}" showOn="button" />
         			
         			
         			 <h:panelGrid columns="2" style="margin-bottom:8px" cellpadding="6">
         				<h:outputText value="#{msg['pages.cadastroCategoria.sexo']}" />
-        				<p:selectOneRadio for="button" value="#{pessoaManagedBean.pessoa.genero}">
+        				<p:selectOneRadio for="button" value="#{pessoaManagedBean.usuario.sexo}">
             				<f:selectItem itemLabel="M " itemValue="M" />
             				<f:selectItem itemLabel=" F" itemValue="F" />
         				</p:selectOneRadio>
                		</h:panelGrid>
                	</p:panelGrid> 
                	<p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}" 
-	                 action="#{pessoaManagedBean.salvar}" 
+	                 action="#{usuarioManagedBean.salvar}" 
 	                 update=":formCadastro, :tabelaCadastro"/>
 	           <p:commandButton value="Entrar" action="inicio.xhtml" immediate="true" />
 	 </h:form>  
-	    <p:dataTable value="#{pessoaManagedBean.pessoas}"
+	    <p:dataTable value="#{usuarioManagedBean.usuarios}"
                 var="aux"
                 id="tabelaCadastro"
    >
@@ -74,7 +74,7 @@
       </p:column>
       
       <p:column headerText="#{msg['pages.cadastroTime.dataNascimento']}">
-        <p:outputLabel value="#{aux.dataNascimento}" />
+        <p:outputLabel value="#{aux.dataNascimento.toString}" />
       </p:column>
       
       <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">

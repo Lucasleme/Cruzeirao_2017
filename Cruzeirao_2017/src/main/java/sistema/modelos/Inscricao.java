@@ -1,41 +1,82 @@
 package sistema.modelos;
 
+import java.util.List;
+
 public class Inscricao {
-	
-	private String dataFinJogador;
-	private String dataFinTime;
-	private String dataFinCampeonato;
-	private float taxa;
-	
-	public String getDataFinJogador() {
-		return dataFinJogador;
+
+	private int InscricaoID;
+
+	private boolean pagamento;
+	private boolean validada;
+	private List<Inscrito> inscritos;
+	private Categoria categoria;
+	private Partida partidas;
+	private Equipe equipe;
+
+	public int getInscricaoID() {
+		return InscricaoID;
 	}
-	public void setDataFinJogador(String dataFinJogador) {
-		this.dataFinJogador = dataFinJogador;
+
+	public void setInscricaoID(int inscricaoID) {
+		InscricaoID = inscricaoID;
 	}
-	public String getDataFinTime() {
-		return dataFinTime;
+
+	public boolean isPagamento() {
+		return pagamento;
 	}
-	public void setDataFinTime(String dataFinTime) {
-		this.dataFinTime = dataFinTime;
+
+	public void setPagamento(boolean pagamento) {
+		this.pagamento = pagamento;
 	}
-	public String getDataFinCampeonato() {
-		return dataFinCampeonato;
+
+	public boolean isValidada() {
+		return validada;
 	}
-	public void setDataFinCampeonato(String dataFinCampeonato) {
-		this.dataFinCampeonato = dataFinCampeonato;
+
+	public void setValidada(boolean validada) {
+		this.validada = validada;
 	}
-	public float getTaxa() {
-		return taxa;
+
+	public List<Inscrito> getInscritos() {
+		return inscritos;
 	}
-	public void setTaxa(float taxa) {
-		this.taxa = taxa;
+
+	public void setInscritos(List<Inscrito> inscritos) {
+		this.inscritos = inscritos;
 	}
+
+	public void addInscritos(Inscrito inscrito) {
+		inscritos.add(inscrito);
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Partida getPartidas() {
+		return partidas;
+	}
+
+	public void setPartidas(Partida partidas) {
+		this.partidas = partidas;
+	}
+
+	public Equipe getEquipe() {
+		return equipe;
+	}
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
+
 	@Override
 	public String toString() {
-		return "Inscricao [dataFinJogador=" + dataFinJogador + ", dataFinTime=" + dataFinTime + ", dataFinCampeonato="
-				+ dataFinCampeonato + ", taxa=" + taxa + "]";
+		return "Inscricao [pagamento=" + pagamento + ", validada=" + validada + ", inscritos=" + inscritos
+				+ ", categoria=" + categoria + ", partidas=" + partidas + "]";
 	}
-	
-	
+
 }
