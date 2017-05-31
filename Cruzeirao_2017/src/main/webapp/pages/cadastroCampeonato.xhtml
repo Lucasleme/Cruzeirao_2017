@@ -6,6 +6,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components"
 >
 	
 	<ui:define name="title">
@@ -28,39 +29,38 @@
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.anoCampeonato']}" />
       <p:inputText value="#{campeonatoManagedBean.campeonato.dataInicioInscricao.ano}"/>
       
-	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.cidade']}" />
-      <p:inputText value="#{campeonatoManagedBean.campeonato.locais.cidade}"/>   	
-      
+	 
    	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}" 
 	                 action="#{campeonatoManagedBean.salvar}"
-	                 update=":formCampeonato, :tabelaCampeonato"
+	                 update=":formCampeonato, formTableCampeonato:tabelaCampeonato"
 	                 />  
-       </h:form>
        
+</h:form>
+	<h:form id="formTableCampeonato">
 	
    <p:dataTable value="#{campeonatoManagedBean.campeonatos}"
                 var="aux"
                 id="tabelaCampeonato"
-   >
-      <p:column headerText="#{msg['pages.cadastroCampeonato.nome']}">
-        <p:outputLabel value="#{aux.nome}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCampeonato.dataIni']}">
-        <p:outputLabel value="#{aux.dataInicioInscricao.dia}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCampeonato.anoCampeonato']}">
-        <p:outputLabel value="#{aux.dataInicioInscricao.ano}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCampeonato.cidade']}">
-        <p:outputLabel value="#{aux.locais.cidade}" />
-      </p:column>
-      <p:column headerText="Inscrição">
-	      <p:commandButton value="Inscrição	" action="cadastroCaterogia.xhtml" immediate="true" />
+              
+                editable="true"
+            
+                paginator="true"
+                rows="5"
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,15"   >
+      
+      
+         <p:column headerText="#{msg['pages.cadastroCampeonato.id']}" filterBy="#{aux.id}">
+        <p:outputLabel value="#{aux.id}" />
       </p:column>
       
+       <p:column headerText="#{msg['pages.cadastroCampeonato.nome']}" filterBy="#{aux.nome}">
+						<p:outputLabel value="#{aux.nome}" />		
+	  </p:column>
+      
    </p:dataTable>	
-	   
+ </h:form>
 	</ui:define>
 </ui:composition>
 

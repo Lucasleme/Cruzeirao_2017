@@ -21,12 +21,6 @@
 	  <p:panelGrid columns="2">
 	  <p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
       <p:inputText value="#{categoriaManagedBean.categoria.nome}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMaxTimes']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.quantidadeMaxTimes}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMinJogadores']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.quantidadeMinJogadores}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMaxJogadores']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.quantidadeMaxJogadores}"/>
         			 <h:panelGrid columns="2" style="margin-bottom:8px" cellpadding="6">
         				<h:outputText value="#{msg['pages.cadastroCategoria.sexo']}" />
         				<p:selectOneRadio for="button" value="#{pessoaManagedBean.pessoa.genero}">

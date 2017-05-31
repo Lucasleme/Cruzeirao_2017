@@ -1,8 +1,9 @@
 package sistema.modelos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Categoria {
+public class Categoria implements Serializable{
 
 	private int CategoriaID;
 

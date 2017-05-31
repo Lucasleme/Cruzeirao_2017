@@ -1,26 +1,41 @@
 package sistema.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import sistema.dao.CampeonatoDAO;
 import sistema.modelos.Campeonato;
+
 
 public class CampeonatoService {
 
-	private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
-
-	public CampeonatoService() {
-
+CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
+ 	
+	public Campeonato salvar(Campeonato campeonato)
+	{
+		campeonato = campeonatoDAO.save(campeonato);
+		campeonatoDAO.closeEntityManager();
+		return campeonato;
+		
+	}
+	
+	public List <Campeonato> getCampeonatos()
+	{
+		List <Campeonato> list = campeonatoDAO.getAll(Campeonato.class);
+		campeonatoDAO.closeEntityManager();
+		return list;
 	}
 
-	public void salvar(Campeonato campeonato) {
-		campeonatos.add(campeonato);
+	public void alterar(Campeonato campeonato) {
+		campeonatoDAO.save(campeonato);
+		campeonatoDAO.closeEntityManager();
 	}
 
-	public List<Campeonato> getCampeonatos() {
-
-		return campeonatos;
-
+	
+	public void remover(Campeonato campeonato) {
+		
+		campeonato = campeonatoDAO.getById(Campeonato.class, campeonato.getID());
+		campeonatoDAO.remove(campeonato);
+		campeonatoDAO.closeEntityManager();
 	}
-
+	
 }

@@ -14,14 +14,18 @@ public class CampeonatoManagedBean {
 
 
 	private Campeonato campeonato = new Campeonato();
+	private List<Campeonato> campeonatos;
 	private CampeonatoService service = new CampeonatoService();
 	
 	
 	public void salvar()
 	{
-		service.salvar(campeonato);
-		campeonato = new Campeonato();
+		campeonato = service.salvar(campeonato);
 		
+		if(campeonatos != null)
+			campeonatos.add(campeonato);
+		
+		campeonato = new Campeonato();
 	}
 
 	public Campeonato getCampeonato() {
@@ -33,8 +37,20 @@ public class CampeonatoManagedBean {
 	}
 
 	public List<Campeonato> getCampeonatos() {
-		return service.getCampeonatos();
+		if (campeonatos == null)
+			campeonatos = service.getCampeonatos();
+
+		return campeonatos;
+	}
+	
+	public void setCampeonatos(List<Campeonato> campeonatos) {
+		this.campeonatos = campeonatos;
 	}
 
+	public void remover(Campeonato campeonato) {
+		service.remover(campeonato);
+		campeonatos.remove(campeonato);
+
+	}
 	
 }

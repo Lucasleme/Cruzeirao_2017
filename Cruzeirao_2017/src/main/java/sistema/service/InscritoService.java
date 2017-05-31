@@ -3,7 +3,6 @@ package sistema.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import sistema.modelos.Inscricao;
 import sistema.modelos.Inscrito;
 
 public class InscritoService {

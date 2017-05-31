@@ -1,6 +1,8 @@
 package sistema.modelos;
 
-public class Date {
+import java.io.Serializable;
+
+public class Date implements Serializable {
 	private int dia;
 	private int mes;
 	private int ano;

@@ -2,9 +2,7 @@ package sistema.beans;
 
 import java.util.List;
 
-import sistema.modelos.Cartao;
 import sistema.modelos.Gol;
-import sistema.service.CartaoService;
 import sistema.service.GolService;
 
 public class GolManagedBean {
