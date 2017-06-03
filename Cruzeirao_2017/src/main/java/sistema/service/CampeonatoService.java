@@ -2,40 +2,64 @@ package sistema.service;
 
 import java.util.List;
 
-import sistema.dao.CampeonatoDAO;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import sistema.modelos.Campeonato;
 
 
-public class CampeonatoService {
+public class CampeonatoService extends Service {
 
-CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
- 	
-	public Campeonato salvar(Campeonato campeonato)
+	public void salvar(Campeonato campeonato)
 	{
-		campeonato = campeonatoDAO.save(campeonato);
-		campeonatoDAO.closeEntityManager();
-		return campeonato;
+	    
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();	
+			em.persist(campeonato);
+		em.getTransaction().commit();	
+	    em.close();
 		
 	}
 	
+	
+	@SuppressWarnings("unchecked")
 	public List <Campeonato> getCampeonatos()
 	{
-		List <Campeonato> list = campeonatoDAO.getAll(Campeonato.class);
-		campeonatoDAO.closeEntityManager();
-		return list;
+		
+		List <Campeonato>campeonatos;
+		
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("Select a From Campeonato a");
+		campeonatos = q.getResultList();
+		em.close();
+		
+		return campeonatos;
+		
 	}
 
 	public void alterar(Campeonato campeonato) {
-		campeonatoDAO.save(campeonato);
-		campeonatoDAO.closeEntityManager();
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();	
+			em.merge(campeonato);
+		em.getTransaction().commit();	
+	    em.close();
+
+		
+		
 	}
 
 	
 	public void remover(Campeonato campeonato) {
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();	
+			campeonato = em.find(Campeonato.class,campeonato.getID()); //Aluno.class,aluno.getMatricula()
+			em.remove(campeonato);
+		em.getTransaction().commit();	
+	    em.close();
+
 		
-		campeonato = campeonatoDAO.getById(Campeonato.class, campeonato.getID());
-		campeonatoDAO.remove(campeonato);
-		campeonatoDAO.closeEntityManager();
+		
 	}
-	
 }

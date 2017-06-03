@@ -12,19 +12,16 @@ import sistema.service.CampeonatoService;
 @SessionScoped
 public class CampeonatoManagedBean {
 
-
 	private Campeonato campeonato = new Campeonato();
 	private List<Campeonato> campeonatos;
 	private CampeonatoService service = new CampeonatoService();
-	
-	
-	public void salvar()
-	{
-		campeonato = service.salvar(campeonato);
-		
-		if(campeonatos != null)
+
+	public void salvar() {
+		service.salvar(campeonato);
+
+		if (campeonatos != null)
 			campeonatos.add(campeonato);
-		
+
 		campeonato = new Campeonato();
 	}
 
@@ -36,15 +33,12 @@ public class CampeonatoManagedBean {
 		this.campeonato = campeonato;
 	}
 
+	// Retorna a lista de alunos para a tabela
 	public List<Campeonato> getCampeonatos() {
 		if (campeonatos == null)
 			campeonatos = service.getCampeonatos();
 
 		return campeonatos;
-	}
-	
-	public void setCampeonatos(List<Campeonato> campeonatos) {
-		this.campeonatos = campeonatos;
 	}
 
 	public void remover(Campeonato campeonato) {
@@ -52,5 +46,5 @@ public class CampeonatoManagedBean {
 		campeonatos.remove(campeonato);
 
 	}
-	
+
 }
