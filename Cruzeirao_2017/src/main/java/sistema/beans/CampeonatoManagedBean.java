@@ -33,7 +33,6 @@ public class CampeonatoManagedBean {
 		this.campeonato = campeonato;
 	}
 
-	// Retorna a lista de alunos para a tabela
 	public List<Campeonato> getCampeonatos() {
 		if (campeonatos == null)
 			campeonatos = service.getCampeonatos();

@@ -1,36 +1,57 @@
 package sistema.service;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import sistema.modelos.Equipe;
 
-public class EquipeService {
+public class EquipeService extends Service {
 
-private ArrayList <Equipe> equipes = new ArrayList<Equipe>();
-	
-	public EquipeService()
-	{
+	public void salvar(Equipe equipe) {
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(equipe);
+		em.getTransaction().commit();
+		em.close();
 
 	}
-	
-	public void salvar(Equipe equipeNova)
-	{
-		int a = 0;
-		for(int i=0;i<equipes.size(); i++){
-			if(equipeNova.getNome() == equipes.get(i).getNome())
-				a++;
-		}
-		if(a==0)
-	    equipes.add(equipeNova);
-	}
-	
 
-	public List <Equipe> getEquipes()
-	{
-		
+	@SuppressWarnings("unchecked")
+	public List<Equipe> getEquipes() {
+
+		List<Equipe> equipes;
+
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("Select a From Equipe a");
+		equipes = q.getResultList();
+		em.close();
+
 		return equipes;
-		
+
 	}
-	
+
+	public void alterar(Equipe equipe) {
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(equipe);
+		em.getTransaction().commit();
+		em.close();
+
+	}
+
+	public void remover(Equipe equipe) {
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		equipe = em.find(Equipe.class, equipe.getEquipeID()); // Aluno.class,aluno.getMatricula()
+		em.remove(equipe);
+		em.getTransaction().commit();
+		em.close();
+
+	}
+
 }

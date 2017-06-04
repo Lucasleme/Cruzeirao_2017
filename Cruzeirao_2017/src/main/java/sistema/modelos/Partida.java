@@ -1,6 +1,5 @@
 package sistema.modelos;
 
-
 import java.util.List;
 
 public class Partida {
@@ -10,7 +9,7 @@ public class Partida {
 	private int numero;
 	private Inscricao equipeMandante;
 	private Inscricao equipeVisitante;
-	private Date data;
+	private String data;
 	private Local local;
 	private Partida proxPartida;
 	private List<Juiz> juizes;
@@ -49,11 +48,11 @@ public class Partida {
 		this.equipeVisitante = equipeVisitante;
 	}
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
@@ -80,8 +79,8 @@ public class Partida {
 	public void setJuizes(List<Juiz> juizes) {
 		this.juizes = juizes;
 	}
-	
-	public void addJuiz(Juiz juiz){
+
+	public void addJuiz(Juiz juiz) {
 		juizes.add(juiz);
 	}
 

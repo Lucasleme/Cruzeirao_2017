@@ -1,56 +1,49 @@
 package sistema.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import sistema.modelos.Equipe;
+
 import sistema.service.EquipeService;
 
+@ManagedBean
+@SessionScoped
 public class EquipeManagedBean {
-	
-	private Equipe equipeNova = new Equipe();
+
+	private Equipe equipe = new Equipe();
+	private List<Equipe> equipes;
 	private EquipeService service = new EquipeService();
-    private List<String> usuarios;
-	
-	
-	public void salvar()
-	{
-		service.salvar(equipeNova);
-		equipeNova = new Equipe();
-		
+
+	public void salvar() {
+		service.salvar(equipe);
+
+		if (equipes != null)
+			equipes.add(equipe);
+
+		equipe = new Equipe();
 	}
 
-	public Equipe getEquipeNova() {
-		return equipeNova;
+	public Equipe getEquipe() {
+		return equipe;
 	}
 
-	public void setEquipeNova(Equipe equipeNova) {
-		this.equipeNova = equipeNova;
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
 	}
 
 	public List<Equipe> getEquipes() {
-		return service.getEquipes();
-	}
-     
-    @PostConstruct
-    public void init() {
-    	usuarios = new ArrayList<String>();
-    	usuarios.add("Lionel Messi");
-    	usuarios.add("Cristiano Ronaldo");
-    	usuarios.add("Kaka de oliveira");
-    	usuarios.add("Neimar so cai");
-    	usuarios.add("Marquinho da Vila");
-    	usuarios.add("ScoobyDoo");
+		if (equipes == null)
+			equipes = service.getEquipes();
 
-    }
-
-	public List<String> getUsuarios() {
-		return usuarios;
+		return equipes;
 	}
 
-	public void setUsuarios(List<String> usuarios) {
-		this.usuarios = usuarios;
+	public void remover(Equipe equipe) {
+		service.remover(equipe);
+		equipes.remove(equipe);
+
 	}
 }

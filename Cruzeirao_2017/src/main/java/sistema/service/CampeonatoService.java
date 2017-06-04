@@ -54,7 +54,7 @@ public class CampeonatoService extends Service {
 
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();	
-			campeonato = em.find(Campeonato.class,campeonato.getID()); //Aluno.class,aluno.getMatricula()
+			campeonato = em.find(Campeonato.class,campeonato.getID()); 
 			em.remove(campeonato);
 		em.getTransaction().commit();	
 	    em.close();

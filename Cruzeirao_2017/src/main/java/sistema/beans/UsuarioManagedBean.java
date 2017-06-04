@@ -1,25 +1,28 @@
 package sistema.beans;
 
+import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
-import sistema.modelos.Tipo;
 import sistema.modelos.Usuario;
 import sistema.service.UsuarioService;
 
+@ManagedBean
+@SessionScoped
 public class UsuarioManagedBean {
-	private UsuarioService service = new UsuarioService();
+
 	private Usuario usuario = new Usuario();
+	private List<Usuario> usuarios;
+	private UsuarioService service = new UsuarioService();
 
-	private Tipo tipo;
+	public void salvar() {
+		service.salvar(usuario);
 
-	public UsuarioService getService() {
-		return service;
-	}
+		if (usuario != null)
+			usuarios.add(usuario);
 
-	public void setService(UsuarioService service) {
-		this.service = service;
+		usuario = new Usuario();
 	}
 
 	public Usuario getUsuario() {
@@ -30,19 +33,17 @@ public class UsuarioManagedBean {
 		this.usuario = usuario;
 	}
 
-	public Tipo getTipo() {
-		return tipo;
+	public List<Usuario> getUsuarios() {
+		if (usuarios == null)
+			usuarios = service.getUsuarios();
+
+		return usuarios;
 	}
 
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
-	}
+	public void remover(Usuario usuario) {
+		service.remover(usuario);
+		usuarios.remove(usuario);
 
-	public void salvar() {
-		service.salvar(usuario);
-		usuario = new Usuario();
-		FacesMessage msg = new FacesMessage("Successful", "Welcome :" + usuario.getNome());
-		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 }
