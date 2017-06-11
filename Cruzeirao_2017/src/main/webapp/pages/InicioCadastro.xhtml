@@ -15,12 +15,17 @@
 <div align="center">
 	  <h:form id="formTime">	
 	  <p:panelGrid columns="1">
-	  	<p:outputLabel value="#{msg['pages.comuns.menuLateral.usuarios']}" />
-      	<p:inputText value=""/>
-   	  	<p:outputLabel value="#{msg['pages.cadastroPessoa.senha']}" />
-      	<p:inputText value=""/>
+	  		<p:inputText type="text" id="username" autocomplete="off" size="30" maxlength="80" label="Usuário">
+				<p:watermark for="username" value="Usuário" />
+			</p:inputText>
+							
+  			<p:password  size="30" id="password" value="Senha:" maxlength="20">
+				<p:watermark for="password" value="Senha" />
+			</p:password>
    	  </p:panelGrid>
-   		    <p:commandButton value="Entrar" action="inicio.xhtml" immediate="true" />
+   		    <p:commandButton value="Login" action="#{loginBean.login}" ajax="false"
+							    style="width: 50%; max-width: 200px;" />
+							    
 	 	 	<p:commandButton value="Cadastro" action="cadastroPessoa.xhtml" immediate="true" />
        </h:form>
 	</div>

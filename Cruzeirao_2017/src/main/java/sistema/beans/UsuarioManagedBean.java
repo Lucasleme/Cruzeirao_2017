@@ -1,5 +1,6 @@
 package sistema.beans;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -15,7 +16,16 @@ public class UsuarioManagedBean {
 	private Usuario usuario = new Usuario();
 	private List<Usuario> usuarios;
 	private UsuarioService service = new UsuarioService();
-
+	private Date dataNascimento;
+	
+	   public Date getDataNascimento() {
+	        return dataNascimento;
+	    }
+	 
+	    public void setDataNascimento(Date dataNascimento) {
+	        this.dataNascimento = dataNascimento;
+	    }
+	    
 	public void salvar() {
 		service.salvar(usuario);
 

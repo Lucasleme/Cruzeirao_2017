@@ -27,8 +27,14 @@
 		        <p:outputLabel value="#{msg['pages.cadastroUsuario.email']}" />
 		      <p:inputText value="#{usuarioManagedBean.usuario.email}"/>
 
-			 <p:outputLabel value="#{msg['pages.cadastroUsuario.dataNascimento']}" />
-		      <p:inputText value="#{usuarioManagedBean.usuario.dataNascimento}"/>
+			<p:outputLabel for="button" value="#{msg['pages.cadastroUsuario.dataNascimento']}"  />
+       		<p:calendar id="button" value="#{usuarioManagedBean.usuario.dataNascimento}" showOn="button" />
+		      
+		      <p:outputLabel value="#{msg['pages.cadastroUsuario.CPF']}" />
+		      <p:inputText value="#{usuarioManagedBean.usuario.CPF}"/>
+		      
+		        <p:outputLabel value="#{msg['pages.cadastroUsuario.sexo']}" />
+		      <p:inputText value="#{usuarioManagedBean.usuario.sexo}"/>
 
 
            </p:panelGrid>
@@ -60,7 +66,13 @@
 									<p:outputLabel value="#{aux.dataNascimento}" />		
 				  </p:column>
 		 			
-		
+		 			<p:column headerText="#{msg['pages.cadastroUsuario.CPF']}" filterBy="#{aux.CPF}">
+									<p:outputLabel value="#{aux.CPF}" />		
+				  </p:column>
+				
+				<p:column headerText="#{msg['pages.cadastroUsuario.Sexo']}" filterBy="#{aux.sexo}">
+									<p:outputLabel value="#{aux.sexo}" />		
+				  </p:column>
 	
 	      
 		 	</p:dataTable>	

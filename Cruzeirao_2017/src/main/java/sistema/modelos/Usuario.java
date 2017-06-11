@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,9 +36,12 @@ public class Usuario implements Serializable {
 	private String endereco;
 	private String CPF;
 	private String RG;
-	private String sexo;
+
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
+
 	private String senha;
-	
+
 	@ManyToMany
 	@JoinTable(name = "usuario_has_equipes", joinColumns = { @JoinColumn(name = "usuario_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "equipe_id") })
@@ -49,8 +54,6 @@ public class Usuario implements Serializable {
 	@OneToMany
 	@JoinTable(name = "campeonato_has_usuarios", joinColumns = @JoinColumn(name = "usuario_id") , inverseJoinColumns = @JoinColumn(name = "campeonato_id") )
 	private List<Campeonato> campeonatos = new ArrayList<Campeonato>();
-
-
 
 	public Usuario(long ID, String nome) {
 		super();
@@ -177,11 +180,11 @@ public class Usuario implements Serializable {
 		RG = rG;
 	}
 
-	public String getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 

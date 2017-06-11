@@ -18,6 +18,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src/main/webapp"/>
+	<classpathentry kind="src" path="Hiber"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -26,7 +27,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSF 2.2 (Mojarra 2.2.0)">
@@ -35,16 +36,7 @@
 			<attribute name="owner.project.facets" value="jst.jsf"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Jones/.m2/repository/org/eclipse/persistence/javax.persistence/2.1.1/javax.persistence-2.1.1.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="org.eclipse.jst.component.archivename" value="javax.persistence-2.1.1.jar"/>
-			<attribute name="maven.groupId" value="org.eclipse.persistence"/>
-			<attribute name="maven.artifactId" value="javax.persistence"/>
-			<attribute name="maven.version" value="2.1.1"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="Auxiliar/eclipselink.jar"/>
+	<classpathentry kind="lib" path="Hiber/openjpa-persistence-2.2.1-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
