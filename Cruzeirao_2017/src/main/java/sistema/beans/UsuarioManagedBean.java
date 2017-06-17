@@ -18,6 +18,12 @@ public class UsuarioManagedBean {
 	private UsuarioService service = new UsuarioService();
 	private Date dataNascimento;
 	
+
+	public String Cadastra(){
+		return "/cadastroPessoa.faces?faces-redirect=true";
+	}
+	
+	
 	   public Date getDataNascimento() {
 	        return dataNascimento;
 	    }

@@ -12,16 +12,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+
 import javax.persistence.JoinColumn;
 
 @Entity
+@NamedQuery(name = "Usuario.pesquisarPorUserName", query = "select u from Usuario u where u.username = :username")
 public class Usuario implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6360850095345609468L;
+	
+	public static final String PESQUISAR_POR_USERNAME = "Usuario.pesquisarPorUserName";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,11 +41,22 @@ public class Usuario implements Serializable {
 	private String endereco;
 	private String CPF;
 	private String RG;
+	private Roles role;
+	
+	
+	public Roles getRole() {
+		return role;
+	}
+	public void setRole(Roles role) {
+		this.role = role;
+	}
 
+	
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 
-	private String senha;
+	private String password;
+	private String username;
 
 	@ManyToMany
 	@JoinTable(name = "usuario_has_equipes", joinColumns = { @JoinColumn(name = "usuario_id") }, inverseJoinColumns = {
@@ -188,12 +204,12 @@ public class Usuario implements Serializable {
 		this.sexo = sexo;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
@@ -210,7 +226,7 @@ public class Usuario implements Serializable {
 		result = prime * result + ((equipes == null) ? 0 : equipes.hashCode());
 		result = prime * result + ((inscricoes == null) ? 0 : inscricoes.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
 		result = prime * result + ((telefoneFixo == null) ? 0 : telefoneFixo.hashCode());
 		result = prime * result + ((telefoneMovel == null) ? 0 : telefoneMovel.hashCode());
@@ -274,10 +290,10 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (senha == null) {
-			if (other.senha != null)
+		if (password == null) {
+			if (other.password != null)
 				return false;
-		} else if (!senha.equals(other.senha))
+		} else if (!password.equals(other.password))
 			return false;
 		if (sexo != other.sexo)
 			return false;
@@ -300,7 +316,7 @@ public class Usuario implements Serializable {
 	public String toString() {
 		return "Usuario [email=" + email + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", campeonatos="
 				+ campeonatos + ", tipo=" + tipo + ", telefoneFixo=" + telefoneFixo + ", telefoneMovel=" + telefoneMovel
-				+ ", endereco=" + endereco + ", CPF=" + CPF + ", RG=" + RG + ", sexo=" + sexo + ", senha=" + senha
+				+ ", endereco=" + endereco + ", CPF=" + CPF + ", RG=" + RG + ", sexo=" + sexo + ", senha=" + password
 				+ "]";
 	}
 

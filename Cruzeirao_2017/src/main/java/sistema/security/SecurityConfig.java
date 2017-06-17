@@ -13,9 +13,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("normal").password("123456").roles("COMUM");
+        auth.inMemoryAuthentication().withUser("normal").password("123456").roles("NORMAL");
         auth.inMemoryAuthentication().withUser("adm").password("123456").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("superadm").password("123456").roles("SUPERADMIN");
+        auth.inMemoryAuthentication().withUser("mestre").password("123456").roles("MESTRE");
     }
 
     //@Override
@@ -32,10 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         
         //Controla o acesso a página protegida  do adm e superadmin        
        	http.authorizeRequests().antMatchers("/pages/adm/**")
-     	          .access("hasRole('ADMIN') or hasRole('SUPERADMIN')");
+     	          .access("hasRole('ADMIN') or hasRole('MESTRE')");
              
         
-        http.authorizeRequests().antMatchers("/pages/superadm/**" ).hasRole("SUPERADMIN");        
+        http.authorizeRequests().antMatchers("/pages/adm/**").hasRole("MESTRE");        
         
 		
     	

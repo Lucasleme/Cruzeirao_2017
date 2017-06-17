@@ -9,21 +9,18 @@
     <p:menubar>
         <p:submenu label="Cruzeirao" icon="ui-icon-document">
             <p:submenu label="#{msg['pages.comuns.menuLateral.criar']}" icon="ui-icon-contact">
-                <p:menuitem value="#{msg['pages.comuns.menuLateral.campeonato']}" url="cadastroCampeonato.xhtml" />
-                <p:menuitem value="#{msg['pages.comuns.menuLateral.categoria']}" url="cadastroCategoria.xhtml" />
-                <p:menuitem value="#{msg['pages.cadastroTime.menu']}" url="cadastroTime.xhtml" />
+                <p:menuitem value="#{msg['pages.cadastroTime.menu']}" url="/normal/cadastroTime.xhtml" />
             </p:submenu>
             <p:menuitem value="Ver jogos" url="verJogosCategori.xhtml" />
  		</p:submenu>
         <p:submenu label="#{msg['pages.comuns.menuLateral.editar']}" icon="ui-icon-pencil">
-            <p:menuitem value="#{msg['pages.comuns.menuLateral.times']}" url="editarTime.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
-            <p:menuitem value="#{msg['pages.comuns.menuLateral.categoria']}" url="editarCategoria.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
-            <p:menuitem value="#{msg['pages.comuns.menuLateral.usuarios']}" url="editarUsuarios.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.times']}" url="/normal/editarTime.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.usuarios']}" url="/normal/editarUsuarios.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
         </p:submenu>
  
         <p:submenu label="#{msg['pages.comuns.menuLateral.ajuda']}" icon="ui-icon-help">
-            <p:menuitem value="#{msg['pages.comuns.menuLateral.site']}" url="ajuda.xhtml" />
-            <p:menuitem value="#{msg['pages.comuns.menuLateral.idioma']}" url="linguagem.xhtml" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.site']}" url="/normal/ajuda.xhtml" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.idioma']}" url="/normal/linguagem.xhtml" />
         </p:submenu>
  
         <p:menuitem value="#{msg['pages.comuns.menuLateral.sair']}" url="/login.xhtml" icon="ui-icon-close" />

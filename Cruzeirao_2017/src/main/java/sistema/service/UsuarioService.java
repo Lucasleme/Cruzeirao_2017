@@ -1,5 +1,7 @@
 package sistema.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -53,5 +55,6 @@ public class UsuarioService extends Service {
 		em.close();
 
 	}
+
 
 }
