@@ -22,6 +22,7 @@ public class CampeonatoService extends Service {
 	}
 	
 	
+	
 	@SuppressWarnings("unchecked")
 	public List <Campeonato> getCampeonatos()
 	{

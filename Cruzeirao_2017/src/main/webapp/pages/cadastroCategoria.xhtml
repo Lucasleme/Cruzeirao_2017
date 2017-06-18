@@ -6,6 +6,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components"
 >
 	
 	<ui:define name="title">
@@ -21,47 +22,47 @@
 	  <p:panelGrid columns="2">
 	  <p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
       <p:inputText value="#{categoriaManagedBean.categoria.nome}"/>
-        			 <h:panelGrid columns="2" style="margin-bottom:8px" cellpadding="6">
-        				<h:outputText value="#{msg['pages.cadastroCategoria.sexo']}" />
-        				<p:selectOneRadio for="button" value="#{pessoaManagedBean.pessoa.genero}">
-            				<f:selectItem itemLabel="M " itemValue="M" />
-            				<f:selectItem itemLabel=" F" itemValue="F" />
-        				</p:selectOneRadio>
-               		</h:panelGrid>   	  
+	  <p:outputLabel value="#{msg['pages.cadastroCategoria.sexo']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.sexo}"/>
+        		  	  
    	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}" 
 	                 action="#{categoriaManagedBean.salvar}"
-	                 update=":formCategoria, :tabelaCategoria"
+	                 update=":formCategoria, formTableCategoria:tabelaCategoria"
 	                 />
        </h:form>
+
 	
-   <p:dataTable value="#{categoriaManagedBean.categorias}"
+	<h:form id="formTableCategoria">
+	
+      <p:dataTable value="#{categoriaManagedBean.categorias}"
                 var="aux"
                 id="tabelaCategoria"
-   >
-      <p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
+                 
+                editable="true"
+            
+                paginator="true"
+                rows="5"
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,15"   >
+      
+      
+      
+        <p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
         <p:outputLabel value="#{aux.nome}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCategoria.quantidadeMaxTimes']}">
-        <p:outputLabel value="#{aux.quantidadeMaxTimes}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCategoria.quantidadeMinJogadores']}">
-        <p:outputLabel value="#{aux.quantidadeMinJogadores}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCategoria.quantidadeMaxJogadores']}">
-        <p:outputLabel value="#{aux.quantidadeMaxJogadores}" />
-      </p:column>
+        </p:column>
+
       <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">
         <p:outputLabel value="#{aux.sexo}" />
       </p:column>
 
       <p:column headerText="#{msg['pages.comuns.menuLateral.times']}">
-        <p:commandButton value="#{msg['pages.cadastroTime.menu']}" action="cadastroTime.xhtml" immediate="true" />
+        <p:commandButton value="#{msg['pages.cadastroTime.menu']}" action="/pages/cadastroTime.xhtml" immediate="true" />
       </p:column>      
       
    </p:dataTable>	
-	   
-	</ui:define>
+ </h:form>
+	   </ui:define>
 </ui:composition>
 
 

@@ -6,6 +6,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components"
 >
 	
 	<ui:define name="title">
@@ -17,71 +18,71 @@
 	 	  
 	  <h1><p:outputLabel value="#{msg['pages.editarTime.menu']}"/></h1>
 	
- <h:form id="form">        
- <p:outputLabel id= "msg" />
- <p:remoteCommand name="onCellEdit" action="#{editarTimeManagedBean.onCellEdit}" update="msg" />
+   
+   <h:form id="formTableTime">
+   
+    <p:dataTable
+                value="#{timeManagedBean.times}"
+                var="aux"
+                id="tabelaTime"
+            
+                editable="true"
+            
+                paginator="true"
+                rows="5"
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,15"
+                
 
-   <p:dataTable value="#{timeManagedBean.times}" var="aux"
-                id="tabelaTimes" editable="true" editMode="cell">
-       <f:facet name="header">
-           Cell Editing with Click and RightClick
-       </f:facet>
- 
-       <p:ajax event="cellEdit" listener="#{timeManagedBean.onCellEdit}" />
- 
-       <p:column headerText="#{msg['pages.cadastroTime.nome']}">
-              <p:cellEditor>
-                  <f:facet name="output"><h:outputText value="#{timeManagedBean.timeNovo.nome}" /></f:facet>
-                  <f:facet name="input"><p:inputText value="#{timeManagedBean.timeNovo.nome}" style="width:96%"/></f:facet>
-              </p:cellEditor>
-          </p:column>
-          
-         <p:column headerText="#{msg['pages.cadastroTime.rua']}">
-              <p:cellEditor>
-                  <f:facet name="output"><h:outputText value="#{timeManagedBean.timeNovo.endereco.rua}" /></f:facet>
-                  <f:facet name="input"><p:inputText value="#{timeManagedBean.timeNovo.endereco.rua}" style="width:96%"/></f:facet>
-              </p:cellEditor>
-          </p:column>
-          
-          <p:column headerText="#{msg['pages.cadastroTime.cidade']}">
-              <p:cellEditor>
-                  <f:facet name="output"><h:outputText value="#{timeManagedBean.timeNovo.endereco.cidade}" /></f:facet>
-                  <f:facet name="input"><p:inputText value="#{timeManagedBean.timeNovo.endereco.cidade}" style="width:96%"/></f:facet>
-              </p:cellEditor>
-          </p:column>
-          
-             <p:column headerText="#{msg['pages.cadastroTime.bairro']}">
-              <p:cellEditor>
-                  <f:facet name="output"><h:outputText value="#{timeManagedBean.timeNovo.endereco.bairro}" /></f:facet>
-                  <f:facet name="input"><p:inputText value="#{timeManagedBean.timeNovo.endereco.bairro}" style="width:96%"/></f:facet>
-              </p:cellEditor>
-          </p:column>
-          
-             <p:column headerText="#{msg['pages.cadastroTime.estado']}">
-              <p:cellEditor>
-                  <f:facet name="output"><h:outputText value="#{timeManagedBean.timeNovo.endereco.estado}" /></f:facet>
-                  <f:facet name="input"><p:inputText value="#{timeManagedBean.timeNovo.endereco.estado}" style="width:96%"/></f:facet>
-              </p:cellEditor>
-          </p:column>
-          
-             <p:column headerText="#{msg['pages.cadastroTime.cep']}">
-              <p:cellEditor>
-                  <f:facet name="output"><h:outputText value="#{timeManagedBean.timeNovo.endereco.cep}" /></f:facet>
-                  <f:facet name="input"><p:inputText value="#{timeManagedBean.timeNovo.endereco.cep}" style="width:96%"/></f:facet>
-              </p:cellEditor>
-          </p:column>
-          
-       <p:column headerText="Edit Players">
-		<p:commandButton value="#{msg['pages.editarTime.editar']}" action="editarUsuarios.xhtml"/>
+                
+   >
+      
+      <p:ajax event="rowEdit" listener="#{timeManagedBean.onRowEdit}" update="tabelaTime" />
+         
+      
+      <p:column headerText="#{msg['pages.cadastroTime.nome']}" filterBy="#{aux.nome}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.nome}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="timeNome" value="#{aux.nome}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+    
+      <p:column headerText="#{msg['pages.cadastroTime.cidade']}" filterBy="#{aux.cidade}">
+     
+     			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.cidade}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="timeCidade" value="#{aux.cidade}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
       </p:column>
-   </p:dataTable>
+      
+      <p:column style="width:70px" headerText="#{msg['pages.cadastroTime.optionTable']}">
+					
+					<p:rowEditor />
+					
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{timeManagedBean.remover(aux)}"
+						update="tabelaTime" />
+	  </p:column>
 
-</h:form>	   
+      
+      
+   </p:dataTable>	
+
+	</h:form>
+
+	
+   	   
 	</ui:define>
 </ui:composition>
-
-
-
-
-
-

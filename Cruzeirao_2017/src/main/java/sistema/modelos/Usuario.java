@@ -35,14 +35,18 @@ public class Usuario implements Serializable {
 	private String email;
 	private String nome;
 	private String dataNascimento;
+	
+	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
+	
 	private String telefoneFixo;
 	private String telefoneMovel;
 	private String endereco;
 	private String CPF;
 	private String RG;
-	private Roles role;
 	
+	@Enumerated(EnumType.STRING)
+	private Roles role;
 	
 	public Roles getRole() {
 		return role;
@@ -50,6 +54,7 @@ public class Usuario implements Serializable {
 	public void setRole(Roles role) {
 		this.role = role;
 	}
+
 
 	
 	@Enumerated(EnumType.STRING)
@@ -75,6 +80,7 @@ public class Usuario implements Serializable {
 		super();
 		this.ID = ID;
 		this.nome = nome;
+
 	}
 
 	public Usuario() {

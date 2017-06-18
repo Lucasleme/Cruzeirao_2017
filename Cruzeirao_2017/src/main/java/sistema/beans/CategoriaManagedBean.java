@@ -14,12 +14,18 @@ public class CategoriaManagedBean {
 	
 
 	private Categoria categoria = new Categoria();
+	private List<Categoria> categorias;
 	private CategoriaService service = new CategoriaService();
 	
 	
 	public void salvar()
 	{
 		service.salvar(categoria);
+		
+		if (categorias != null)
+			categorias.add(categoria);
+
+		
 		categoria = new Categoria();
 		
 	}

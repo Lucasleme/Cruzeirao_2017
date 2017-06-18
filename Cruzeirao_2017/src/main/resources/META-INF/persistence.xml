@@ -6,6 +6,8 @@
 		<class>sistema.modelos.Juiz</class>
 		<class>sistema.modelos.Inscrito</class>
 		<class>sistema.modelos.Equipe</class>
+		<class>sistema.modelos.Categoria</class>
+		<class>sistema.modelos.Time</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Database_Cru;create=true"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
