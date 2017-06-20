@@ -57,11 +57,19 @@ public class Usuario implements Serializable {
 
 
 	
-	@Enumerated(EnumType.STRING)
-	private Sexo sexo;
+	private String sexo;
 
 	private String password;
 	private String username;
+
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
 
 	@ManyToMany
 	@JoinTable(name = "usuario_has_equipes", joinColumns = { @JoinColumn(name = "usuario_id") }, inverseJoinColumns = {
@@ -80,7 +88,7 @@ public class Usuario implements Serializable {
 		super();
 		this.ID = ID;
 		this.nome = nome;
-
+		this.role = Roles.NORMAL;
 	}
 
 	public Usuario() {
@@ -202,12 +210,12 @@ public class Usuario implements Serializable {
 		RG = rG;
 	}
 
-	public Sexo getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(Sexo sexo) {
-		this.sexo = sexo;
+	public void setSexo(String sexo) {
+		this.sexo = sexo.toString();
 	}
 
 	public String getPassword() {
@@ -233,10 +241,12 @@ public class Usuario implements Serializable {
 		result = prime * result + ((inscricoes == null) ? 0 : inscricoes.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
 		result = prime * result + ((telefoneFixo == null) ? 0 : telefoneFixo.hashCode());
 		result = prime * result + ((telefoneMovel == null) ? 0 : telefoneMovel.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -301,6 +311,8 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
+		if (role != other.role)
+			return false;
 		if (sexo != other.sexo)
 			return false;
 		if (telefoneFixo == null) {
@@ -315,15 +327,21 @@ public class Usuario implements Serializable {
 			return false;
 		if (tipo != other.tipo)
 			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [email=" + email + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", campeonatos="
-				+ campeonatos + ", tipo=" + tipo + ", telefoneFixo=" + telefoneFixo + ", telefoneMovel=" + telefoneMovel
-				+ ", endereco=" + endereco + ", CPF=" + CPF + ", RG=" + RG + ", sexo=" + sexo + ", senha=" + password
-				+ "]";
+		return "Usuario [ID=" + ID + ", email=" + email + ", nome=" + nome + ", dataNascimento=" + dataNascimento
+				+ ", tipo=" + tipo + ", telefoneFixo=" + telefoneFixo + ", telefoneMovel=" + telefoneMovel
+				+ ", endereco=" + endereco + ", CPF=" + CPF + ", RG=" + RG + ", role=" + role + ", sexo=" + sexo
+				+ ", password=" + password + ", username=" + username + ", equipes=" + equipes + ", inscricoes="
+				+ inscricoes + ", campeonatos=" + campeonatos + "]";
 	}
 
 }
