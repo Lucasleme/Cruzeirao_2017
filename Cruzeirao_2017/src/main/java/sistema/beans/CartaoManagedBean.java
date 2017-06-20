@@ -9,7 +9,9 @@ import sistema.service.CartaoService;
 public class CartaoManagedBean {
 	private CartaoService service = new CartaoService();
 	private Cartao cartao = new Cartao();
-	
+
+
+
 	public Cartao getCartao() {
 		return cartao;
 	}

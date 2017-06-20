@@ -27,7 +27,7 @@ public class Categoria implements Serializable{
 	private List<Grupo> grupos;
 	private int minJogadores;
 	private int maxJogadores;
-	private Sexo sexo;
+	private String sexo;
 
 	
 	public Categoria(long ID, String nome) {
@@ -115,12 +115,12 @@ public class Categoria implements Serializable{
 		this.maxJogadores = maxJogadores;
 	}
 
-	public Sexo getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(Sexo sexo) {
-		this.sexo = sexo;
+	public void setSexo(String sexo) {
+		this.sexo = sexo.toString();
 	}
 
 	
@@ -189,7 +189,10 @@ public class Categoria implements Serializable{
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (sexo != other.sexo)
+		if (sexo == null) {
+			if (other.sexo != null)
+				return false;
+		} else if (!sexo.equals(other.sexo))
 			return false;
 		return true;
 	}

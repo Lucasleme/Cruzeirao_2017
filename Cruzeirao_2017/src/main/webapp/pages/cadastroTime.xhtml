@@ -27,6 +27,10 @@
       <p:outputLabel value="#{msg['pages.cadastroTime.cidade']}" />
       <p:inputText value="#{timeManagedBean.time.cidade}"/>
       
+      <h:outputText value="#{msg['pages.cadastroTime.dataFundacao']}*" />
+      <p:calendar id="button" value="#{timeManagedBean.time.dataFundacao}" showOn="button"/>
+		       
+      
    	  </p:panelGrid >
 	  <p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}" 
 	                 action="#{timeManagedBean.salvar}"
@@ -61,9 +65,14 @@
 	        <p:outputLabel value="#{aux.cidade}" />
 	      </p:column>
 	      
+	      <p:column headerText="#{msg['pages.cadastroTime.dataFundacao']}*">
+	      	<p:commandButton value="#{timeManagedBean.time.dataFundacao}" />
+	      </p:column>
+	      
 	      <p:column headerText="Cadastrar Jogadores">
 	      	<p:commandButton value="#{msg['pages.cadastroTime.jogador']}" action="/pages/cadastroJogadores.xhtml" immediate="true" />
 	      </p:column>
+	      
 	      
    </p:dataTable>	
 	</h:form>

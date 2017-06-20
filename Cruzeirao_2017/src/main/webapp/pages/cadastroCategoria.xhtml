@@ -22,8 +22,18 @@
 	  <p:panelGrid columns="2">
 	  <p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
       <p:inputText value="#{categoriaManagedBean.categoria.nome}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.sexo']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.sexo}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroCategoria.minJogadores']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.minJogadores}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroCategoria.maxJogadores']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.maxJogadores}"/>
+      
+	  <p:outputLabel for="basic" value="#{msg['pages.cadastroCategoria.sexo']}" />
+		       	    <p:selectOneListbox id="basic" value="#{categoriaManagedBean.categoria.sexo}" required="true" >
+           				 <f:selectItem itemLabel="Feminino"  itemValue="Feminino" />
+            			 <f:selectItem itemLabel="Masculino" itemValue="Masulino" />
+        			</p:selectOneListbox>
         		  	  
    	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}" 
@@ -52,6 +62,14 @@
         <p:outputLabel value="#{aux.nome}" />
         </p:column>
 
+	  <p:column headerText="#{msg['pages.cadastroCategoria.minJogadores']}">
+        <p:outputLabel value="#{aux.minJogadores}" />
+      </p:column>
+      
+      <p:column headerText="#{msg['pages.cadastroCategoria.maxJogadores']}">
+        <p:outputLabel value="#{aux.maxJogadores}" />
+      </p:column>
+      
       <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">
         <p:outputLabel value="#{aux.sexo}" />
       </p:column>

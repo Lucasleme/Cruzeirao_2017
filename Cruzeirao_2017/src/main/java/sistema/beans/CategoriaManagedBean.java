@@ -1,16 +1,24 @@
 package sistema.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 
 import sistema.modelos.Categoria;
 import sistema.service.CategoriaService;
 
+
+
 @ManagedBean
 @SessionScoped
-public class CategoriaManagedBean {
+public class CategoriaManagedBean implements Serializable{
 	
 
 	private Categoria categoria = new Categoria();
@@ -18,6 +26,16 @@ public class CategoriaManagedBean {
 	private CategoriaService service = new CategoriaService();
 	
 	
+	 public List<String> getSexos() {
+	        return service.getSexos();
+	}
+	 
+	 public void onRowEdit(RowEditEvent event) {
+
+			Categoria c = ((Categoria) event.getObject());
+			service.alterar(c);
+		}
+	 
 	public void salvar()
 	{
 		service.salvar(categoria);
@@ -41,6 +59,22 @@ public class CategoriaManagedBean {
 	public List<Categoria> getCategorias() {
 		return service.getCategorias();
 	}
+	
+	public void remover(Categoria categoria) {
+		service.remover(categoria);
+		categorias.remove(categoria);
 
+	}
+	
+	public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+         
+        if(newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alteração realizada", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+	
+	}
 	
 }

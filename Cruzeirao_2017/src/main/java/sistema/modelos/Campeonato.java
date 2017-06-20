@@ -29,7 +29,7 @@ public class Campeonato implements Serializable {
 	private Calendar dataInicioInscricao;
 	private Calendar dataFimInscricao;
 	private Calendar dataInicioCampeonato;
-	//private Calendar dataFimCampeonato;
+	private Calendar dataFimCampeonato;
 	
 	private double valorTaxa;
 
@@ -100,14 +100,14 @@ public class Campeonato implements Serializable {
 	}
 
 
-	//public Calendar getDataFimCampeonato() {
-		//return dataFimCampeonato;
-	//}
+	public Calendar getDataFimCampeonato() {
+		return dataFimCampeonato;
+	}
 
 
-//	public void setDataFimCampeonato(Calendar dataFimCampeonato) {
-	//	this.dataFimCampeonato = dataFimCampeonato;
-	//}
+	public void setDataFimCampeonato(Calendar dataFimCampeonato) {
+		this.dataFimCampeonato = dataFimCampeonato;
+	}
 
 
 	public double getValorTaxa() {
@@ -145,7 +145,7 @@ public class Campeonato implements Serializable {
 		int result = 1;
 		result = prime * result + (int) (ID ^ (ID >>> 32));
 		result = prime * result + ((categorias == null) ? 0 : categorias.hashCode());
-		//result = prime * result + ((dataFimCampeonato == null) ? 0 : dataFimCampeonato.hashCode());
+		result = prime * result + ((dataFimCampeonato == null) ? 0 : dataFimCampeonato.hashCode());
 		result = prime * result + ((dataFimInscricao == null) ? 0 : dataFimInscricao.hashCode());
 		result = prime * result + ((dataInicioCampeonato == null) ? 0 : dataInicioCampeonato.hashCode());
 		result = prime * result + ((dataInicioInscricao == null) ? 0 : dataInicioInscricao.hashCode());
@@ -174,11 +174,11 @@ public class Campeonato implements Serializable {
 				return false;
 		} else if (!categorias.equals(other.categorias))
 			return false;
-		//if (dataFimCampeonato == null) {
-		//	if (other.dataFimCampeonato != null)
-			//	return false;
-		//} else if (!dataFimCampeonato.equals(other.dataFimCampeonato))
-		//	return false;
+		if (dataFimCampeonato == null) {
+			if (other.dataFimCampeonato != null)
+				return false;
+		} else if (!dataFimCampeonato.equals(other.dataFimCampeonato))
+			return false;
 		if (dataFimInscricao == null) {
 			if (other.dataFimInscricao != null)
 				return false;

@@ -1,6 +1,7 @@
 package sistema.service;
 
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +11,20 @@ import sistema.modelos.Categoria;
 
 public class CategoriaService extends Service  {
 
+	private final static String[] sexos;
+	
+	static {
+        sexos = new String[2];
+        sexos [0] = "Feminino";
+        sexos [1] = "Masculino";
+
+	}
+	
+	public List<String> getSexos() {
+        return Arrays.asList(sexos);
+    }
+	
+	
 	
 	public void salvar(Categoria categoria)
 	{

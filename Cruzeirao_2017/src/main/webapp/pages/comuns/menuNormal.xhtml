@@ -9,18 +9,17 @@
     <p:menubar>
         <p:submenu label="Cruzeirao" icon="ui-icon-document">
             <p:submenu label="#{msg['pages.comuns.menuLateral.criar']}" icon="ui-icon-contact">
-                <p:menuitem value="#{msg['pages.cadastroTime.menu']}" url="/normal/cadastroTime.xhtml" />
+                <p:menuitem value="#{msg['pages.cadastroTime.menu']}" url="/pages/cadastroTime.xhtml" />
             </p:submenu>
             <p:menuitem value="Ver jogos" url="verJogosCategori.xhtml" />
  		</p:submenu>
         <p:submenu label="#{msg['pages.comuns.menuLateral.editar']}" icon="ui-icon-pencil">
-            <p:menuitem value="#{msg['pages.comuns.menuLateral.times']}" url="/normal/editarTime.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
-            <p:menuitem value="#{msg['pages.comuns.menuLateral.usuarios']}" url="/normal/editarUsuarios.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.usuarios']}" url="/pages/editarUsuarios.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
         </p:submenu>
  
         <p:submenu label="#{msg['pages.comuns.menuLateral.ajuda']}" icon="ui-icon-help">
-            <p:menuitem value="#{msg['pages.comuns.menuLateral.site']}" url="/normal/ajuda.xhtml" />
-            <p:menuitem value="#{msg['pages.comuns.menuLateral.idioma']}" url="/normal/linguagem.xhtml" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.site']}" url="/pages/ajuda.xhtml" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.idioma']}" url="/pages/linguagem.xhtml" />
         </p:submenu>
  
         <p:menuitem value="#{msg['pages.comuns.menuLateral.sair']}" url="/login.xhtml" icon="ui-icon-close" />

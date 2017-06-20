@@ -26,22 +26,22 @@
       <p:calendar id="button" value="#{campeonatoManagedBean.campeonato.dataInicioInscricao}" required="true"  showOn="button" mindate="06/19/17"/>
       
       <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFimInscricao']}" />
-      <p:calendar id="button" value="#{campeonatoManagedBean.campeonato.dataFimInscricao}" required="true"  showOn="button" mindate="06/19/17"/>
+      <p:calendar  value="#{campeonatoManagedBean.campeonato.dataFimInscricao}" required="true"  showOn="button" mindate="06/19/17"/>
       
       <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataInicioCampeonato']}" />
-      <p:calendar id="button" value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}" required="true"  showOn="button" mindate="06/19/17"/>
+      <p:calendar  value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}" required="true"  showOn="button" mindate="06/19/17"/>
       
-     <!-- <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFimCampeonato']}" />
-      <p:calendar id="button" value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}" required="true"  showOn="button" mindate="06/19/17"/>
-      -->
+      <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataFimCampeonato']}" />
+      <p:calendar  value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}" required="true"  showOn="button" mindate="06/19/17"/>
       
-      <p:outputLabel value="#{msg['pages.cadastroCampeonato.valorTaxa']}"/>
-   	  <h:panelGrid columns="1" style="margin-bottom: 10px">
+      
+     <!-- <p:outputLabel value="#{msg['pages.cadastroCampeonato.valorTaxa']}"/>
+   	  <h:panelGrid columns="1" style= "margin-bottom: 10px">
         <p:inputNumber id="nmb1" value="#{campeonatoManagedBean.campeonato.valorTaxa}" symbol=" R$" />
         <p:slider for="nmb1" />
       </h:panelGrid>
 
-	 
+	 -->
    	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}" 
 	                 action="#{campeonatoManagedBean.salvar}"
@@ -78,11 +78,11 @@
 	   <p:column headerText="#{msg['pages.cadastroCampeonato.dataInicioCampeonato']}" filterBy="#{aux.dataInicioCampeonato}">
 		<p:outputLabel value="#{aux.dataInicioCampeonato}" />		
 	   </p:column>
-	   <!--
+	   
 	   <p:column headerText="#{msg['pages.cadastroCampeonato.dataFimCampeonato']}" filterBy="#{aux.dataFimCampeonato}">
 		<p:outputLabel value="#{aux.dataFimCampeonato}" />		
 	   </p:column>
-	   -->
+	   
 	   <p:column headerText="#{msg['pages.cadastroCampeonato.valorTaxa']}" filterBy="#{aux.valorTaxa}">
 		<p:outputLabel value="#{aux.valorTaxa}" />		
 	   </p:column>

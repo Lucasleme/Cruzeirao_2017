@@ -1,6 +1,7 @@
 package sistema.modelos;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,8 @@ public class Time implements Serializable{
 	private String nome;
 	
 	private String cidade;
+	
+	private Calendar dataFundacao;
 
 	
 	
@@ -94,6 +97,14 @@ public class Time implements Serializable{
 	@Override
 	public String toString() {
 		return "Time [ID=" + ID + ", nome=" + nome + ", cidade=" + cidade + "]";
+	}
+
+	public Calendar getDataFundacao() {
+		return dataFundacao;
+	}
+
+	public void setDataFundacao(Calendar dataFundacao) {
+		this.dataFundacao = dataFundacao;
 	}
 	
 	

@@ -92,6 +92,7 @@ public class Usuario implements Serializable {
 	}
 
 	public Usuario() {
+		this.role = Roles.NORMAL;
 	}
 
 	public long getID() {
