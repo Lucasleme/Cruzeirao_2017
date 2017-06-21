@@ -1,26 +1,32 @@
 package sistema.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
+import org.primefaces.event.FlowEvent;
 import org.primefaces.event.RowEditEvent;
 
 import sistema.modelos.Time;
 import sistema.service.TimeService;
 
 
+@SuppressWarnings("serial")
 @ManagedBean
 @SessionScoped
 
-public class TimeManagedBean {
+public class TimeManagedBean implements Serializable {
 
 	private Time time = new Time();
 	private List<Time> times;
 	private TimeService service = new TimeService();
 	private List<String> jogadores;
+	private boolean skip;
 	
 	public void onRowEdit(RowEditEvent event) {
 
@@ -44,6 +50,9 @@ public class TimeManagedBean {
 			times.add(time);
 
 		time = new Time();
+		
+		FacesMessage msg = new FacesMessage("Successful", "Time Cadastrado ");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 	public Time getTime() {
@@ -66,6 +75,24 @@ public class TimeManagedBean {
 		times.remove(time);
 
 	}
+	
+	public boolean isSkip() {
+        return skip;
+    }
+ 
+    public void setSkip(boolean skip) {
+        this.skip = skip;
+    }
+     
+    public String onFlowProcess(FlowEvent event) {
+        if(skip) {
+            skip = false;   //reset in case user goes back
+            return "confirm";
+        }
+        else {
+            return event.getNewStep();
+        }
+    }
 
 
 }

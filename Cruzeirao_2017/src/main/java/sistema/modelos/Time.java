@@ -1,7 +1,6 @@
 package sistema.modelos;
 
 import java.io.Serializable;
-import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,7 @@ public class Time implements Serializable{
 	
 	private String cidade;
 	
-	private Calendar dataFundacao;
+	private String dataFundacao;
 
 	
 	
@@ -66,6 +65,7 @@ public class Time implements Serializable{
 		int result = 1;
 		result = prime * result + (int) (ID ^ (ID >>> 32));
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
+		result = prime * result + ((dataFundacao == null) ? 0 : dataFundacao.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
@@ -86,6 +86,11 @@ public class Time implements Serializable{
 				return false;
 		} else if (!cidade.equals(other.cidade))
 			return false;
+		if (dataFundacao == null) {
+			if (other.dataFundacao != null)
+				return false;
+		} else if (!dataFundacao.equals(other.dataFundacao))
+			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
@@ -96,14 +101,14 @@ public class Time implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Time [ID=" + ID + ", nome=" + nome + ", cidade=" + cidade + "]";
+		return "Time [ID=" + ID + ", nome=" + nome + ", cidade=" + cidade + ", dataFundacao=" + dataFundacao + "]";
 	}
 
-	public Calendar getDataFundacao() {
+	public String getDataFundacao() {
 		return dataFundacao;
 	}
 
-	public void setDataFundacao(Calendar dataFundacao) {
+	public void setDataFundacao(String dataFundacao) {
 		this.dataFundacao = dataFundacao;
 	}
 	

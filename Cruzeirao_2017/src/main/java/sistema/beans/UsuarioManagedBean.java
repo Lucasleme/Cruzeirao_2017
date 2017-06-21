@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 
 import java.io.Serializable;
 import org.primefaces.event.FlowEvent;
+import org.primefaces.event.RowEditEvent;
 
 import sistema.modelos.Usuario;
 import sistema.service.UsuarioService;
@@ -27,6 +28,11 @@ public class UsuarioManagedBean implements Serializable{
 	private String option;
 	private String password;
 	
+	 public void onRowEdit(RowEditEvent event) {
+
+			Usuario u = ((Usuario) event.getObject());
+			service.alterar(u);
+		}
 
 	public String getPassword() {
 		return password;

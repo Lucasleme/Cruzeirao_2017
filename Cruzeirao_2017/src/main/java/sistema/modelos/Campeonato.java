@@ -1,7 +1,6 @@
 package sistema.modelos;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -26,10 +25,11 @@ public class Campeonato implements Serializable {
 	private List<Juiz> juizes;
 	private List<Categoria> categorias;
 	
-	private Calendar dataInicioInscricao;
-	private Calendar dataFimInscricao;
-	private Calendar dataInicioCampeonato;
-	private Calendar dataFimCampeonato;
+	private String dataInicioInscricao;
+	private String dataFimInscricao;
+	private String dataInicioCampeonato;
+	private String dataFimCampeonato;
+	
 	
 	private double valorTaxa;
 
@@ -70,46 +70,6 @@ public class Campeonato implements Serializable {
 	}
 
 
-	public Calendar getDataInicioInscricao() {
-		return dataInicioInscricao;
-	}
-
-
-	public void setDataInicioInscricao(Calendar dataInicioInscricao) {
-		this.dataInicioInscricao = dataInicioInscricao;
-	}
-
-
-	public Calendar getDataFimInscricao() {
-		return dataFimInscricao;
-	}
-
-
-	public void setDataFimInscricao(Calendar dataFimInscricao) {
-		this.dataFimInscricao = dataFimInscricao;
-	}
-
-
-	public Calendar getDataInicioCampeonato() {
-		return dataInicioCampeonato;
-	}
-
-
-	public void setDataInicioCampeonato(Calendar dataInicioCampeonato) {
-		this.dataInicioCampeonato = dataInicioCampeonato;
-	}
-
-
-	public Calendar getDataFimCampeonato() {
-		return dataFimCampeonato;
-	}
-
-
-	public void setDataFimCampeonato(Calendar dataFimCampeonato) {
-		this.dataFimCampeonato = dataFimCampeonato;
-	}
-
-
 	public double getValorTaxa() {
 		return valorTaxa;
 	}
@@ -138,6 +98,46 @@ public class Campeonato implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public String getDataInicioInscricao() {
+		return dataInicioInscricao;
+	}
+
+
+	public void setDataInicioInscricao(String dataInicioInscricao) {
+		this.dataInicioInscricao = dataInicioInscricao;
+	}
+
+
+	public String getDataFimInscricao() {
+		return dataFimInscricao;
+	}
+
+
+	public void setDataFimInscricao(String dataFimInscricao) {
+		this.dataFimInscricao = dataFimInscricao;
+	}
+
+
+	public String getDataInicioCampeonato() {
+		return dataInicioCampeonato;
+	}
+
+
+	public void setDataInicioCampeonato(String dataInicioCampeonato) {
+		this.dataInicioCampeonato = dataInicioCampeonato;
+	}
+
+
+	public String getDataFimCampeonato() {
+		return dataFimCampeonato;
+	}
+
+
+	public void setDataFimCampeonato(String dataFimCampeonato) {
+		this.dataFimCampeonato = dataFimCampeonato;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -218,7 +218,7 @@ public class Campeonato implements Serializable {
 	public String toString() {
 		return "Campeonato [ID=" + ID + ", nome=" + nome + ", locais=" + locais + ", juizes=" + juizes + ", categorias="
 				+ categorias + ", dataInicioInscricao=" + dataInicioInscricao + ", dataFimInscricao=" + dataFimInscricao
-				+ ", dataInicioCampeonato=" + dataInicioCampeonato + ", dataFimCampeonato=" //+ dataFimCampeonato
+				+ ", dataInicioCampeonato=" + dataInicioCampeonato + ", dataFimCampeonato=" + dataFimCampeonato
 				+ ", valorTaxa=" + valorTaxa + "]";
 	}
 

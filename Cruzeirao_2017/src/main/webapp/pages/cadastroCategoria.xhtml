@@ -19,28 +19,62 @@
 	  <h1><p:outputLabel value="#{msg['pages.cadastroCategoria.menu']}"/></h1>
 	  
 	  <h:form id="formCategoria">	
-	  <p:panelGrid columns="2">
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.nome}"/>
-      
-      <p:outputLabel value="#{msg['pages.cadastroCategoria.minJogadores']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.minJogadores}"/>
-      
-      <p:outputLabel value="#{msg['pages.cadastroCategoria.maxJogadores']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.maxJogadores}"/>
-      
-	  <p:outputLabel for="basic" value="#{msg['pages.cadastroCategoria.sexo']}" />
+	  <p:growl id="growl" sticky="true" showDetail="true"/>
+		  
+		  
+		  
+	 <p:wizard flowListener="#{categoriaManagedBean.onFlowProcess}">
+		<p:tab id="personal" title="#Personal">
+            <p:panel header="#Personal Details">
+                <p:messages />
+                <h:panelGrid columns="2" >
+                    <h:outputText value="#{msg['pages.cadastroCategoria.nome']}*" />
+                    <p:inputText value="#{categoriaManagedBean.categoria.nome}" required="true" />
+
+		       		<p:outputLabel value="#{msg['pages.cadastroCategoria.minJogadores']}" />
+		      		<p:inputText value="#{categoriaManagedBean.categoria.minJogadores}" />
+
+ 					<p:outputLabel value="#{msg['pages.cadastroCategoria.maxJogadores']}*" />
+		      		<p:inputText value="#{categoriaManagedBean.categoria.maxJogadores}" required= "true"/>
+		      				      
+		       	    <p:outputLabel for="basic" value="#{msg['pages.cadastroCategoria.sexo']}*" />
 		       	    <p:selectOneListbox id="basic" value="#{categoriaManagedBean.categoria.sexo}" required="true" >
            				 <f:selectItem itemLabel="Feminino"  itemValue="Feminino" />
             			 <f:selectItem itemLabel="Masculino" itemValue="Masulino" />
         			</p:selectOneListbox>
-        		  	  
-   	  </p:panelGrid>
-	  <p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}" 
-	                 action="#{categoriaManagedBean.salvar}"
-	                 update=":formCategoria, formTableCategoria:tabelaCategoria"
-	                 />
-       </h:form>
+				</h:panelGrid>
+            </p:panel>
+        </p:tab>				
+
+		
+		<p:tab id="confirm" title="#{msg['pages.cadastroCampeonato.confirmacao']}">
+            <p:panel header="#{msg['pages.cadastroCampeonato.confirmacao']}">
+                <h:panelGrid id="confirmation" columns="2" columnClasses="grid,grid">
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="#{msg['pages.cadastroCategoria.nome']}" />
+                        <h:outputText value="#{categoriaManagedBean.categoria.nome}" />
+ 
+                        <h:outputText value="#{msg['pages.cadastroCategoria.sexo']}" />
+                        <h:outputText value="#{categoriaManagedBean.categoria.sexo}" />
+ 
+                    </h:panelGrid>
+ 
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="#{msg['pages.cadastroCategoria.minJogadores']}" />
+                        <h:outputText value="#{categoriaManagedBean.categoria.minJogadores}" />
+ 
+                        <h:outputText value="#{msg['pages.cadastroCategoria.maxJogadores']}" />
+                        <h:outputText value="#{categoriaManagedBean.categoria.maxJogadores}" />
+						
+                    </h:panelGrid>
+				</h:panelGrid>
+				
+				<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}" actionListener="#{categoriaManagedBean.salvar}" update=":formCategoria, formTableCategoria:tabelaCategoria,growl" process="@this"/>
+            </p:panel>
+        </p:tab>
+    </p:wizard>
+					
+    </h:form>
 
 	
 	<h:form id="formTableCategoria">
@@ -49,38 +83,10 @@
                 var="aux"
                 id="tabelaCategoria"
                  
-                editable="true"
-            
-                paginator="true"
-                rows="5"
-                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                rowsPerPageTemplate="5,10,15"   >
-      
-      
-      
-        <p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
-        <p:outputLabel value="#{aux.nome}" />
-        </p:column>
-
-	  <p:column headerText="#{msg['pages.cadastroCategoria.minJogadores']}">
-        <p:outputLabel value="#{aux.minJogadores}" />
-      </p:column>
-      
-      <p:column headerText="#{msg['pages.cadastroCategoria.maxJogadores']}">
-        <p:outputLabel value="#{aux.maxJogadores}" />
-      </p:column>
-      
-      <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">
-        <p:outputLabel value="#{aux.sexo}" />
-      </p:column>
-
-      <p:column headerText="#{msg['pages.comuns.menuLateral.times']}">
-        <p:commandButton value="#{msg['pages.cadastroTime.menu']}" action="/pages/cadastroTime.xhtml" immediate="true" />
-      </p:column>      
-      
-   </p:dataTable>	
- </h:form>
-	   </ui:define>
+                editable="true" >
+      </p:dataTable>	
+	</h:form>
+	 </ui:define>
 </ui:composition>
 
 

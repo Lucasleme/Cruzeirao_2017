@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.FlowEvent;
 import org.primefaces.event.RowEditEvent;
 
 import sistema.modelos.Categoria;
@@ -16,6 +17,7 @@ import sistema.service.CategoriaService;
 
 
 
+@SuppressWarnings("serial")
 @ManagedBean
 @SessionScoped
 public class CategoriaManagedBean implements Serializable{
@@ -24,11 +26,13 @@ public class CategoriaManagedBean implements Serializable{
 	private Categoria categoria = new Categoria();
 	private List<Categoria> categorias;
 	private CategoriaService service = new CategoriaService();
+	private boolean skip;
 	
 	
 	 public List<String> getSexos() {
 	        return service.getSexos();
 	}
+	
 	 
 	 public void onRowEdit(RowEditEvent event) {
 
@@ -45,6 +49,9 @@ public class CategoriaManagedBean implements Serializable{
 
 		
 		categoria = new Categoria();
+		
+		FacesMessage msg = new FacesMessage("Successful", "Categoria cadastrada ");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 		
 	}
 
@@ -77,4 +84,21 @@ public class CategoriaManagedBean implements Serializable{
 	
 	}
 	
+	public boolean isSkip() {
+        return skip;
+    }
+ 
+    public void setSkip(boolean skip) {
+        this.skip = skip;
+    }
+     
+    public String onFlowProcess(FlowEvent event) {
+        if(skip) {
+            skip = false;   //reset in case user goes back
+            return "confirm";
+        }
+        else {
+            return event.getNewStep();
+        }
+    }
 }

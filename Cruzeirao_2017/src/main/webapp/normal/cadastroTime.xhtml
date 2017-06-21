@@ -1,5 +1,5 @@
 
-<ui:composition template="templateMenu.xhtml"
+<ui:composition template="templateNormal.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -20,13 +20,14 @@
 	  <h1><p:outputLabel value="#{msg['pages.cadastroTime.menu']}"/></h1>
 	  
 	  <h:form id="formTime">	
+	  
 	   <p:growl id="growl" sticky="true" showDetail="true"/>
 		  
 		  
 		  
 	 <p:wizard flowListener="#{timeManagedBean.onFlowProcess}">
-		<p:tab id="personal" title="#{msg['pages.cadastroTime.menu']}">
-            <p:panel header="#{msg['pages.cadastroTime.menu']}">
+		<p:tab id="personal" title="#Personal">
+            <p:panel header="#Personal Details">
                 <p:messages />
                 <h:panelGrid columns="2" >
                     <h:outputText value="#{msg['pages.cadastroTime.nome']}*" />
@@ -43,7 +44,7 @@
         </p:tab>	
 		<p:tab id="confirm" title="#{msg['pages.cadastroCampeonato.confirmacao']}">
             <p:panel header="#{msg['pages.cadastroCampeonato.confirmacao']}">
-                <h:panelGrid id="confirmation" columns="2" columnClasses="grid,grid">
+                <h:panelGrid id="confirmation" columns="1" columnClasses="grid">
                   <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="#{msg['pages.cadastroTime.nome']}" />
                         <h:outputText value="#{timeManagedBean.time.nome}" />
@@ -54,11 +55,13 @@
                         <h:outputText value="#{msg['pages.cadastroTime.dataFundacao']}" />
                         <h:outputText value="#{timeManagedBean.time.dataFundacao}"/>
  
+                        <h:outputText />
+                        <h:outputText />
                     </h:panelGrid>
 				  </h:panelGrid>
  
                 <p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}" actionListener="#{timeManagedBean.salvar}" update=":formTime, formTableTime:tabelaTime,growl" process="@this"/>
-                <p:commandButton value="#{msg['pages.cadastroTime.cadastroJogadores']}" action="/pages/cadastroJogadores.xhtml" />
+                <p:commandButton value="{msg['pages.cadastroTime.cadastroJogadores']}" action="/pages/cadastroJogadores.xhtml" />
             </p:panel>
         </p:tab>
     </p:wizard>
