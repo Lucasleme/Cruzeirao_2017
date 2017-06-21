@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.usernameParameter("username")
 		.passwordParameter("password");
     	
+    	http.authorizeRequests().antMatchers("/cadastroPessoa.xhtml").permitAll();
     	
     	//Logout
         http.logout().logoutUrl("/logout")
