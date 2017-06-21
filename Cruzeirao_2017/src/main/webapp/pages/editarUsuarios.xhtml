@@ -17,38 +17,124 @@
 	  
 	  <h1><p:outputLabel value="#{msg['pages.cadastroUsuarios.menu']}"/></h1>
 	 
-	
-   <p:dataTable value=""   >
-      <p:column headerText="#{msg['pages.cadastroTime.nome']}">
-        <p:outputLabel value="Grupo Brotherhood" />
-      </p:column>
-      <p:column headerText="CPF">
-        <p:outputLabel value="000.000.000-00" />
-      </p:column>
-      <p:column headerText="RG">
-        <p:outputLabel value="00.000.000-0" />
-      </p:column>
-      <p:column headerText="Email">
-        <p:outputLabel value="cruz_eirao@jogos.br" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroTime.dataNascimento']}">
-      	<p:outputLabel value="14-07-1995" />
-      </p:column>
-	  <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">
-      	<p:outputLabel value="M" />
-      </p:column>      
-
-		<p:column headerText="#{msg['pages.cadastroCategoria.nivel']}">
-			<h:panelGrid columns="1" cellpadding="5"> 
-	        <h:outputLabel for="multiple" value="" />
-    	    	<p:selectCheckboxMenu id="nivel" value="#{pessoaManagedBean.nivel}" label="#{msg['pages.comuns.menuLateral.usuarios']}" multiple="true"
-                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-            		<f:selectItems value="#{pessoaManagedBean.nivel}" />
-        		</p:selectCheckboxMenu>
-    		</h:panelGrid>
-		</p:column>     
+	<h:form id= "formTableUsuario">
+   <p:dataTable value="#{usuarioManagedBean.usuarios}"
+                var="aux"
+                id="tabelaUsuario"
+				editable="true"
+            
+                paginator="true"
+                rows="5"
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,15"
+   >
+   
+   
+    <p:ajax event="rowEdit" listener="#{usuarioManagedBean.onRowEdit}" update="tabelaUsuario" />
+      
+	  
+	  <p:column headerText="#{msg['pages.cadastroTime.nome']}" filterBy="#{aux.nome}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.nome}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioNome" value="#{aux.nome}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+	  
+	   <p:column headerText="CPF" filterBy="#{aux.CPF}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.CPF}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioCPF" value="#{aux.CPF}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+	 
+	 <p:column headerText="RG" filterBy="#{aux.RG}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.RG}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioRG" value="#{aux.RG}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+	  
+	  <p:column headerText="Email" filterBy="#{aux.email}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.email}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioEmail" value="#{aux.email}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+	  
+	  <p:column headerText="#{msg['pages.cadastroUsuario.dataNascimento']}" filterBy="#{aux.dataNascimento}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.dataNascimento}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioDataNascimento" value="#{aux.dataNascimento}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+	  
+	  <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}" filterBy="#{aux.sexo}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.sexo}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioSexo" value="#{aux.sexo}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+   
+		<p:column headerText="#{msg['pages.cadastroUsuario.role']}" filterBy="#{aux.role}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.role}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioRole" value="#{aux.role}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>	
+	  </p:column> 
+	  
+	  <p:column style="width:70px" headerText="#{msg['pages.cadastroTime.optionTable']}">
+					
+					<p:rowEditor />
+					
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{usuarioManagedBean.remover(aux)}"
+						update="tabelaUsuario" />
+	  </p:column>
    </p:dataTable>	
-	   
+	   </h:form>
 	</ui:define>
 </ui:composition>
 

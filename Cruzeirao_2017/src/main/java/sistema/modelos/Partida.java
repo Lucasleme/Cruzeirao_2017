@@ -1,97 +1,110 @@
 package sistema.modelos;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Partida {
-	
-	private Array times;
+
+	private int PartidaID;
+
+	private int numero;
+	private Inscricao equipeMandante;
+	private Inscricao equipeVisitante;
 	private String data;
-	private String horario;
-	private int placarVencedor;
-	private int placarPerdedor;
-	private String endereco;
-	private ArrayList<Jogador> gools;
-	private ArrayList<Jogador> cartoesAmarelos; 
-	private ArrayList<Jogador> cartoesVermelhos;
-	private int rodada;
-	private Categoria categoria; 
-	
-	
-	public int getRodada() {
-		return rodada;
+	private Local local;
+	private Partida proxPartida;
+	private List<Juiz> juizes;
+	private Grupo grupo;
+	private String relatoJuiz;
+
+	public int getPartidaID() {
+		return PartidaID;
 	}
-	public void setRodada(int rodada) {
-		this.rodada = rodada;
+
+	public void setPartidaID(int partidaID) {
+		PartidaID = partidaID;
 	}
-	public Categoria getCategoria() {
-		return categoria;
+
+	public int getNumero() {
+		return numero;
 	}
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
-	public Array getTimes() {
-		return times;
+
+	public Inscricao getEquipeMandante() {
+		return equipeMandante;
 	}
-	public void setTimes(Array times) {
-		this.times = times;
+
+	public void setEquipeMandante(Inscricao equipeMandante) {
+		this.equipeMandante = equipeMandante;
 	}
+
+	public Inscricao getEquipeVisitante() {
+		return equipeVisitante;
+	}
+
+	public void setEquipeVisitante(Inscricao equipeVisitante) {
+		this.equipeVisitante = equipeVisitante;
+	}
+
 	public String getData() {
 		return data;
 	}
+
 	public void setData(String data) {
 		this.data = data;
 	}
-	public String getHorario() {
-		return horario;
+
+	public Local getLocal() {
+		return local;
 	}
-	public void setHorario(String horario) {
-		this.horario = horario;
+
+	public void setLocal(Local local) {
+		this.local = local;
 	}
-	public int getPlacarVencedor() {
-		return placarVencedor;
+
+	public Partida getProxPartida() {
+		return proxPartida;
 	}
-	public void setPlacarVencedor(int placarVencedor) {
-		this.placarVencedor = placarVencedor;
+
+	public void setProxPartida(Partida proxPartida) {
+		this.proxPartida = proxPartida;
 	}
-	public int getPlacarPerdedor() {
-		return placarPerdedor;
+
+	public List<Juiz> getJuizes() {
+		return juizes;
 	}
-	public void setPlacarPerdedor(int placarPerdedor) {
-		this.placarPerdedor = placarPerdedor;
+
+	public void setJuizes(List<Juiz> juizes) {
+		this.juizes = juizes;
 	}
-	public String getEndereco() {
-		return endereco;
+
+	public void addJuiz(Juiz juiz) {
+		juizes.add(juiz);
 	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+
+	public Grupo getGrupo() {
+		return grupo;
 	}
-	public ArrayList<Jogador> getGools() {
-		return gools;
+
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
 	}
-	public void setGools(ArrayList<Jogador> gools) {
-		this.gools = gools;
+
+	public String getRelatoJuiz() {
+		return relatoJuiz;
 	}
-	public ArrayList<Jogador> getCartoesAmarelos() {
-		return cartoesAmarelos;
+
+	public void setRelatoJuiz(String relatoJuiz) {
+		this.relatoJuiz = relatoJuiz;
 	}
-	public void setCartoesAmarelos(ArrayList<Jogador> cartoesAmarelos) {
-		this.cartoesAmarelos = cartoesAmarelos;
-	}
-	public ArrayList<Jogador> getCartoesVermelhos() {
-		return cartoesVermelhos;
-	}
-	public void setCartoesVermelhos(ArrayList<Jogador> cartoesVermelhos) {
-		this.cartoesVermelhos = cartoesVermelhos;
-	}
+
 	@Override
 	public String toString() {
-		return "Partida [times=" + times + ", data=" + data + ", horario=" + horario + ", placarVencedor="
-				+ placarVencedor + ", placarPerdedor=" + placarPerdedor + ", endereco=" + endereco + ", gools=" + gools
-				+ ", cartoesAmarelos=" + cartoesAmarelos + ", cartoesVermelhos=" + cartoesVermelhos + ", rodada="
-				+ rodada + ", categoria=" + categoria + "]";
+		return "Partida [PartidaID=" + PartidaID + ", numero=" + numero + ", equipeMandante=" + equipeMandante
+				+ ", equipeVisitante=" + equipeVisitante + ", data=" + data + ", local=" + local + ", proxPartida="
+				+ proxPartida + ", grupo=" + grupo + ", relatoJuiz=" + relatoJuiz + "]";
 	}
-	
-	
 
 }

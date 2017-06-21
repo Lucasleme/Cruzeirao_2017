@@ -6,6 +6,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components"
 >
 	
 	<ui:define name="title">
@@ -18,58 +19,74 @@
 	  <h1><p:outputLabel value="#{msg['pages.cadastroCategoria.menu']}"/></h1>
 	  
 	  <h:form id="formCategoria">	
-	  <p:panelGrid columns="2">
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.nome}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMaxTimes']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.quantidadeMaxTimes}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMinJogadores']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.quantidadeMinJogadores}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.quantidadeMaxJogadores']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.quantidadeMaxJogadores}"/>
-        			 <h:panelGrid columns="2" style="margin-bottom:8px" cellpadding="6">
-        				<h:outputText value="#{msg['pages.cadastroCategoria.sexo']}" />
-        				<p:selectOneRadio for="button" value="#{pessoaManagedBean.pessoa.genero}">
-            				<f:selectItem itemLabel="M " itemValue="M" />
-            				<f:selectItem itemLabel=" F" itemValue="F" />
-        				</p:selectOneRadio>
-               		</h:panelGrid>   	  
-   	  </p:panelGrid>
-	  <p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}" 
-	                 action="#{categoriaManagedBean.salvar}"
-	                 update=":formCategoria, :tabelaCategoria"
-	                 />
-	  <p:commandButton value="#{msg['pages.cadastroEndereco.menu']}" 
-	                 action="cadastroEndereco.xhtml" />	                 
-       </h:form>
+	  <p:growl id="growl" sticky="true" showDetail="true"/>
+		  
+		  
+		  
+	 <p:wizard flowListener="#{categoriaManagedBean.onFlowProcess}">
+		<p:tab id="personal" title="#Personal">
+            <p:panel header="#Personal Details">
+                <p:messages />
+                <h:panelGrid columns="2" >
+                    <h:outputText value="#{msg['pages.cadastroCategoria.nome']}*" />
+                    <p:inputText value="#{categoriaManagedBean.categoria.nome}" required="true" />
+
+		       		<p:outputLabel value="#{msg['pages.cadastroCategoria.minJogadores']}" />
+		      		<p:inputText value="#{categoriaManagedBean.categoria.minJogadores}" />
+
+ 					<p:outputLabel value="#{msg['pages.cadastroCategoria.maxJogadores']}*" />
+		      		<p:inputText value="#{categoriaManagedBean.categoria.maxJogadores}" required= "true"/>
+		      				      
+		       	    <p:outputLabel for="basic" value="#{msg['pages.cadastroCategoria.sexo']}*" />
+		       	    <p:selectOneListbox id="basic" value="#{categoriaManagedBean.categoria.sexo}" required="true" >
+           				 <f:selectItem itemLabel="Feminino"  itemValue="Feminino" />
+            			 <f:selectItem itemLabel="Masculino" itemValue="Masulino" />
+        			</p:selectOneListbox>
+				</h:panelGrid>
+            </p:panel>
+        </p:tab>				
+
+		
+		<p:tab id="confirm" title="#{msg['pages.cadastroCampeonato.confirmacao']}">
+            <p:panel header="#{msg['pages.cadastroCampeonato.confirmacao']}">
+                <h:panelGrid id="confirmation" columns="2" columnClasses="grid,grid">
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="#{msg['pages.cadastroCategoria.nome']}" />
+                        <h:outputText value="#{categoriaManagedBean.categoria.nome}" />
+ 
+                        <h:outputText value="#{msg['pages.cadastroCategoria.sexo']}" />
+                        <h:outputText value="#{categoriaManagedBean.categoria.sexo}" />
+ 
+                    </h:panelGrid>
+ 
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="#{msg['pages.cadastroCategoria.minJogadores']}" />
+                        <h:outputText value="#{categoriaManagedBean.categoria.minJogadores}" />
+ 
+                        <h:outputText value="#{msg['pages.cadastroCategoria.maxJogadores']}" />
+                        <h:outputText value="#{categoriaManagedBean.categoria.maxJogadores}" />
+						
+                    </h:panelGrid>
+				</h:panelGrid>
+				
+				<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}" actionListener="#{categoriaManagedBean.salvar}" update=":formCategoria, formTableCategoria:tabelaCategoria,growl" process="@this"/>
+            </p:panel>
+        </p:tab>
+    </p:wizard>
+					
+    </h:form>
+
 	
-   <p:dataTable value="#{categoriaManagedBean.categorias}"
+	<h:form id="formTableCategoria">
+	
+      <p:dataTable value="#{categoriaManagedBean.categorias}"
                 var="aux"
                 id="tabelaCategoria"
-   >
-      <p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
-        <p:outputLabel value="#{aux.nome}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCategoria.quantidadeMaxTimes']}">
-        <p:outputLabel value="#{aux.quantidadeMaxTimes}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCategoria.quantidadeMinJogadores']}">
-        <p:outputLabel value="#{aux.quantidadeMinJogadores}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCategoria.quantidadeMaxJogadores']}">
-        <p:outputLabel value="#{aux.quantidadeMaxJogadores}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">
-        <p:outputLabel value="#{aux.sexo}" />
-      </p:column>
-
-      <p:column headerText="#{msg['pages.comuns.menuLateral.times']}">
-        <p:commandButton value="#{msg['pages.cadastroTime.menu']}" action="cadastroTime.xhtml" immediate="true" />
-      </p:column>      
-      
-   </p:dataTable>	
-	   
-	</ui:define>
+                 
+                editable="true" >
+      </p:dataTable>	
+	</h:form>
+	 </ui:define>
 </ui:composition>
 
 

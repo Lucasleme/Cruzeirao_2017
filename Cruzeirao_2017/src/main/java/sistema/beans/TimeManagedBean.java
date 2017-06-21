@@ -1,62 +1,98 @@
 package sistema.beans;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.FlowEvent;
+import org.primefaces.event.RowEditEvent;
+
 import sistema.modelos.Time;
 import sistema.service.TimeService;
 
+
+@SuppressWarnings("serial")
 @ManagedBean
 @SessionScoped
-public class TimeManagedBean {
-	
-	private Time timeNovo = new Time();
+
+public class TimeManagedBean implements Serializable {
+
+	private Time time = new Time();
+	private List<Time> times;
 	private TimeService service = new TimeService();
-    private List<String> jogadores;
+	private List<String> jogadores;
+	private boolean skip;
 	
+	public void onRowEdit(RowEditEvent event) {
+
+		Time t = ((Time) event.getObject());
+		service.alterar(t);
+	}
 	
-	public void salvar()
-	{
-		service.salvar(timeNovo);
-		timeNovo = new Time();
+	 @PostConstruct
+		 public List<String> getJogadores() {
+				if (jogadores == null)
+					jogadores = service.getJogadores();
+
+				return jogadores;
+			}
+		 
+
+	public void salvar() {
+		service.salvar(time);
+
+		if (times != null)
+			times.add(time);
+
+		time = new Time();
 		
+		FacesMessage msg = new FacesMessage("Successful", "Time Cadastrado ");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-	public Time getTimeNovo() {
-		return timeNovo;
+	public Time getTime() {
+		return time;
 	}
 
-	public void setTimeNovo(Time timeNovo) {
-		this.timeNovo = timeNovo;
+	public void setTime(Time time) {
+		this.time= time;
 	}
 
 	public List<Time> getTimes() {
-		return service.getTimes();
-	}
-     
-    @PostConstruct
-    public void init() {
-    	jogadores = new ArrayList<String>();
-    	jogadores.add("Lionel Messi");
-    	jogadores.add("Cristiano Ronaldo");
-        jogadores.add("Kaka de oliveira");
-        jogadores.add("Neimar so cai");
-        jogadores.add("Marquinho da Vila");
-        jogadores.add("ScoobyDoo");
+		if (times == null)
+			times = service.getTimes();
 
+		return times;
+	}
+
+	public void remover(Time time) {
+		service.remover(time);
+		times.remove(time);
+
+	}
+	
+	public boolean isSkip() {
+        return skip;
+    }
+ 
+    public void setSkip(boolean skip) {
+        this.skip = skip;
+    }
+     
+    public String onFlowProcess(FlowEvent event) {
+        if(skip) {
+            skip = false;   //reset in case user goes back
+            return "confirm";
+        }
+        else {
+            return event.getNewStep();
+        }
     }
 
-	public List<String> getJogadores() {
-		return jogadores;
-	}
-
-	public void setJogadores(List<String> jogadores) {
-		this.jogadores = jogadores;
-	}
- 
-	
 
 }

@@ -19,9 +19,9 @@
 	  
 	  <h:form>
 	  <h:panelGrid columns="2" cellpadding="5">
-        <h:outputLabel for="menu" value="#{msg['pages.cadastroTime.jogadores']}" />
-        <p:selectCheckboxMenu id="menu" value="#{timeManagedBean.jogadores}" label="#{msg['pages.cadastroTime.selecione']}"
-                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+        <h:outputLabel for="menu" value="Selecione seus jogadores:" />
+        <p:selectCheckboxMenu id="menu" value="#{timeManagedBean.jogadores}" label="#{msg['pages.cadastroTime.jogador']}"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:600px">
             <f:selectItems value="#{timeManagedBean.jogadores}" />
         </p:selectCheckboxMenu>
         </h:panelGrid>
